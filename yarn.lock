@@ -3803,6 +3803,13 @@ eslint-config-standard@^14.1.1:
   resolved "https://registry.yarnpkg.com/eslint-config-standard/-/eslint-config-standard-14.1.1.tgz#830a8e44e7aef7de67464979ad06b406026c56ea"
   integrity sha512-Z9B+VR+JIXRxz21udPTL9HpFMyoMUEeX1G251EQ6e05WD9aPVtVBn09XUmZ259wCMlCDmYDSZG62Hhm+ZTJcUg==
 
+eslint-formatter-gitlab@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/eslint-formatter-gitlab/-/eslint-formatter-gitlab-2.0.0.tgz#ab722c6ab82bc6758a3963c35765c205b5df29ba"
+  integrity sha512-GUCzfOHF6g6+bSIA48MHap74hqfHujYqk3toS44t53ds+sETtKsZa6mgVH7mS86Oy+tM65J4wWz0/H+1tD2WJQ==
+  dependencies:
+    js-yaml "^3.13.1"
+
 eslint-import-resolver-node@^0.3.2:
   version "0.3.4"
   resolved "https://registry.yarnpkg.com/eslint-import-resolver-node/-/eslint-import-resolver-node-0.3.4.tgz#85ffa81942c25012d8231096ddf679c03042c717"
@@ -4639,6 +4646,19 @@ git-url-parse@^11.1.2:
   integrity sha512-gZeLVGY8QVKMIkckncX+iCq2/L8PlwncvDFKiWkBn9EtCfYDbliRTTp6qzyQ1VMdITUfq7293zDzfpjdiGASSQ==
   dependencies:
     git-up "^4.0.0"
+
+gitlab-ci-license-checker-parser@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/gitlab-ci-license-checker-parser/-/gitlab-ci-license-checker-parser-1.0.3.tgz#4f68c95300441865f90a5e5f5071a7dd0826f4dd"
+  integrity sha512-c6CQ+/WfhF7dQq1wuwmJ3mVXhRfRsMEv4Tb2DkVrbySYR1ndzv7re30aLPvvp+J26dpF19jKbp5w3z9+h0viiw==
+  dependencies:
+    commander "^2.18.0"
+
+gitlab-ci-yarn-audit-parser@leon0399/gitlab-ci-yarn-audit-parser:
+  version "1.0.3"
+  resolved "https://codeload.github.com/leon0399/gitlab-ci-yarn-audit-parser/tar.gz/a55e43b2799645b98036161935a6910e6d66dc47"
+  dependencies:
+    commander "^2.18.0"
 
 glob-parent@^3.1.0:
   version "3.1.0"
