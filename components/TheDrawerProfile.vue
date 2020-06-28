@@ -2,9 +2,10 @@
   <v-list-item v-if="$auth.loggedIn" two-line>
     <v-list-item-avatar>
       <v-avatar color="primary">
-        <span class="white--text headline">
-          {{ $auth.user.attributes.avatar_name }}
-        </span>
+        <img
+          :src="$auth.user.attributes.avatar"
+          :alt="$auth.user.attributes.login"
+        />
       </v-avatar>
     </v-list-item-avatar>
     <v-list-item-content>
