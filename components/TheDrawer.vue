@@ -48,6 +48,14 @@ export default {
           },
         },
       },
+      managementItems: {
+        users: {
+          icon: 'mdi-account-multiple-outline',
+          to: {
+            name: 'users',
+          },
+        },
+      },
     },
   }),
   computed: {
