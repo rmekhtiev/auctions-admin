@@ -1,5 +1,3 @@
-import colors from 'vuetify/es5/util/colors'
-
 export default {
   /*
    ** Nuxt rendering mode
@@ -37,7 +35,7 @@ export default {
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
    */
-  plugins: [],
+  plugins: ['~/plugins/vue-i18n'],
   /*
    ** Auto import components
    ** See https://nuxtjs.org/api/configuration-components

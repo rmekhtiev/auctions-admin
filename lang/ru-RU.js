@@ -1,0 +1,21 @@
+export default {
+  roles: {
+    ADMIN: 'Администратор',
+    MODERATOR: 'Модератор',
+    BANKRUPTCY_MANGER: 'Антикризисный',
+    USER: 'Пользователь',
+  },
+  menu: {
+    defaultItems: {
+      items: {
+        home: 'Главная',
+      },
+    },
+    managementItems: {
+      title: 'Управление',
+      items: {
+        users: 'Пользователи',
+      },
+    },
+  },
+}

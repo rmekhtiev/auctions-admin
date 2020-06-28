@@ -39,7 +39,16 @@ export default {
     },
   },
   data: () => ({
-    items: {},
+    items: {
+      defaultItems: {
+        home: {
+          icon: 'mdi-apps',
+          to: {
+            name: 'index',
+          },
+        },
+      },
+    },
   }),
   computed: {
     display: {

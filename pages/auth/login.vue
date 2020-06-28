@@ -13,7 +13,7 @@
           </v-text-field>
           <v-text-field
             v-model="form.password"
-            :append-icon="password_visible ? 'visibility' : 'visibility_off'"
+            :append-icon="password_visible ? 'mdi-eye' : 'mdi-eye-off'"
             label="Пароль"
             :type="password_visible ? 'text' : 'password'"
             name="password"
