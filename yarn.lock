@@ -1290,6 +1290,18 @@
     mustache "^2.3.0"
     stack-trace "0.0.10"
 
+"@reststate/client@^0.0.8":
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/@reststate/client/-/client-0.0.8.tgz#e5b0c2786adb4cda425d28cd4b6a1421d8b8270e"
+  integrity sha512-j7qw2nNvWvGQTRRfhTvfvSAUOoDKoBJ2SNAXcFw1XWk9bogFXXGg4NZzpgIqqqf9LBYrt74Rv8v5VfcrAiq/1g==
+
+"@reststate/vuex@^0.2.2":
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/@reststate/vuex/-/vuex-0.2.2.tgz#fdb76f2d38f4a263ab3d1ac98b0d9b17d824a2a8"
+  integrity sha512-cftXx1z4EnvcLWL9E9SYRJ6GwiFFhocozBYRvGm/aanetfKjcJxFzoLjYM7kkotSxJgwTTjwK6crG//hQKqalQ==
+  dependencies:
+    "@reststate/client" "^0.0.8"
+
 "@stylelint/postcss-css-in-js@^0.37.1":
   version "0.37.1"
   resolved "https://registry.yarnpkg.com/@stylelint/postcss-css-in-js/-/postcss-css-in-js-0.37.1.tgz#41e5e7660f73d88227610e18c6ebb262d56ac125"
@@ -5685,6 +5697,17 @@ json5@^2.1.2:
   dependencies:
     minimist "^1.2.5"
 
+jsonapi-vuex@^4.3.3:
+  version "4.3.3"
+  resolved "https://registry.yarnpkg.com/jsonapi-vuex/-/jsonapi-vuex-4.3.3.tgz#c4c483fe1f0f5ada43fdcca4e60730a44cfc6475"
+  integrity sha512-RZLIByqkleBvz0CGq7f5u5Z+1oBxAD9THsitwpb+FIBElCHgCwaSKTvQNxW2c9notfKEEbWJUHKl63OShldQ8A==
+  dependencies:
+    jsonpath-plus "^4.0.0"
+    lodash.get "^4.4.2"
+    lodash.isequal "^4.5.0"
+    lodash.merge "^4.6.2"
+    lodash.set "^4.3.2"
+
 jsonfile@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/jsonfile/-/jsonfile-4.0.0.tgz#8771aae0799b64076b76640fca058f9c10e33ecb"
@@ -5700,6 +5723,11 @@ jsonfile@^6.0.1:
     universalify "^1.0.0"
   optionalDependencies:
     graceful-fs "^4.1.6"
+
+jsonpath-plus@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/jsonpath-plus/-/jsonpath-plus-4.0.0.tgz#954b69faa3d8b07f30ae2f9e601176a4b0d2806e"
+  integrity sha512-e0Jtg4KAzDJKKwzbLaUtinCn0RZseWBVRTRGihSpvFlM3wTR7ExSp+PTdeTsDrLNJUe7L7JYJe8mblHX5SCT6A==
 
 kind-of@^3.0.2, kind-of@^3.0.3, kind-of@^3.2.0:
   version "3.2.2"
@@ -5884,6 +5912,11 @@ lodash.get@^4.4.2:
   resolved "https://registry.yarnpkg.com/lodash.get/-/lodash.get-4.4.2.tgz#2d177f652fa31e939b4438d5341499dfa3825e99"
   integrity sha1-LRd/ZS+jHpObRDjVNBSZ36OCXpk=
 
+lodash.isequal@^4.5.0:
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/lodash.isequal/-/lodash.isequal-4.5.0.tgz#415c4478f2bcc30120c22ce10ed3226f7d3e18e0"
+  integrity sha1-QVxEePK8wwEgwizhDtMib30+GOA=
+
 lodash.kebabcase@^4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/lodash.kebabcase/-/lodash.kebabcase-4.1.1.tgz#8489b1cb0d29ff88195cceca448ff6d6cc295c36"
@@ -5893,6 +5926,16 @@ lodash.memoize@^4.1.2:
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/lodash.memoize/-/lodash.memoize-4.1.2.tgz#bcc6c49a42a2840ed997f323eada5ecd182e0bfe"
   integrity sha1-vMbEmkKihA7Zl/Mj6tpezRguC/4=
+
+lodash.merge@^4.6.2:
+  version "4.6.2"
+  resolved "https://registry.yarnpkg.com/lodash.merge/-/lodash.merge-4.6.2.tgz#558aa53b43b661e1925a0afdfa36a9a1085fe57a"
+  integrity sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==
+
+lodash.set@^4.3.2:
+  version "4.3.2"
+  resolved "https://registry.yarnpkg.com/lodash.set/-/lodash.set-4.3.2.tgz#d8757b1da807dde24816b0d6a84bea1a76230b23"
+  integrity sha1-2HV7HagH3eJIFrDWqEvqGnYjCyM=
 
 lodash.template@^4.5.0:
   version "4.5.0"
