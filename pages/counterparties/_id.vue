@@ -1,16 +1,16 @@
 <template>
   <div id="counterparty">
-    <counterparty-info-card
-      :counterparty="counterparty"
-    ></counterparty-info-card>
+    <counterparty-info-card :counterparty="counterparty" />
+    <counterparty-legal-card :counterparty="counterparty" />
   </div>
 </template>
 
 <script>
 import CounterpartyInfoCard from '../../components/counterparties/CounterpartyInfoCard'
+import CounterpartyLegalCard from '../../components/counterparties/CounterpartyLegalCard'
 export default {
   name: 'Id',
-  components: { CounterpartyInfoCard },
+  components: { CounterpartyLegalCard, CounterpartyInfoCard },
   fetch: ({ store, params }) => {
     return Promise.all([
       store.dispatch('counterparties/loadById', {
