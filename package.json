@@ -29,7 +29,9 @@
     "@reststate/vuex": "^0.2.2",
     "jsonapi-vuex": "^4.3.3",
     "nuxt": "^2.13.0",
-    "vue-i18n": "^8.18.2"
+    "vue-i18n": "^8.18.2",
+    "vuedl": "^0.3.8",
+    "vuetify-dialog": "^2.0.6"
   },
   "devDependencies": {
     "@nuxt/typescript-build": "^1.0.3",

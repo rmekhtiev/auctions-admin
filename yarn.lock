@@ -9799,6 +9799,11 @@ vm-browserify@^1.0.1:
   resolved "https://registry.yarnpkg.com/vm-browserify/-/vm-browserify-1.1.2.tgz#78641c488b8e6ca91a75f511e7a3b32a86e5dda0"
   integrity sha512-2ham8XPWTONajOR0ohOKOHXkm3+gaBmGut3SRuu75xLd/RRaY6vqgh8NBYYk7+RW3u5AtzPQZG8F10LHkl0lAQ==
 
+vue-asyncable@^0.2.0:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/vue-asyncable/-/vue-asyncable-0.2.1.tgz#3c7524289db0a03c8c158e3adfe20c918aa93cac"
+  integrity sha512-Qd0YcKkxq12pXBhiXMlRLDFmES/1keYhhjozYh7w4XsDxE2z+MGE/1p8rBKQtd6YpoLyUPrxhZwToyHgjo9fgg==
+
 vue-client-only@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/vue-client-only/-/vue-client-only-2.0.0.tgz#ddad8d675ee02c761a14229f0e440e219de1da1c"
@@ -9893,6 +9898,18 @@ vue@^2.6.11:
   version "2.6.11"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.11.tgz#76594d877d4b12234406e84e35275c6d514125c5"
   integrity sha512-VfPwgcGABbGAue9+sfrD4PuwFar7gPb1yl1UK1MwXoQPAw0BKSqWfoYCT/ThFrdEVWoI51dBuyCoiNU9bZDZxQ==
+
+vuedl@^0.3.8:
+  version "0.3.8"
+  resolved "https://registry.yarnpkg.com/vuedl/-/vuedl-0.3.8.tgz#71272200d22dfc7d09b13cd3443b7a3c590793c6"
+  integrity sha512-0LR45Yov2MWbaidmX7gvG5ZHnZ4HGS//B0RWtNh/7ee+1JkW6X5zfS+titkVrHlMis9qNov6Xa19utfjG6jjsg==
+  dependencies:
+    vue-asyncable "^0.2.0"
+
+vuetify-dialog@^2.0.6:
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/vuetify-dialog/-/vuetify-dialog-2.0.6.tgz#2aa771583cbd7f7a72cdd921bd3d43b492600f73"
+  integrity sha512-gp4ha/STMI9C55wPgTSVV7iTzLuqNV1KKSYSEmvKXiWKSAcM9kIjWQ039bXsyBW2wfX6TJB10HMF459pkfB/8Q==
 
 vuetify-loader@^1.4.3:
   version "1.5.0"
