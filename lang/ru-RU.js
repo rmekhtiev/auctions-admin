@@ -15,6 +15,7 @@ export default {
       title: 'Управление',
       items: {
         users: 'Пользователи',
+        counterparties: 'Контрагенты',
       },
     },
   },
