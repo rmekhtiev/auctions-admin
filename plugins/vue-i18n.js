@@ -9,7 +9,7 @@ export default ({ app }) => {
     locale: 'ru',
     fallbackLocale: 'en',
     messages: {
-      ru
-    }
+      ru,
+    },
   })
 }
