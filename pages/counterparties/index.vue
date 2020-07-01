@@ -34,12 +34,24 @@
         </v-card>
       </v-col>
     </v-row>
+    <v-btn
+      color="primary"
+      fixed
+      bottom
+      right
+      dark
+      fab
+      @click="createCounterparty()"
+    >
+      <v-icon>mdi-plus</v-icon>
+    </v-btn>
   </div>
 </template>
 
 <script>
 import serverSidePaginated from '../../mixins/serverSidePaginated'
 import counterparties from '../../mixins/resources/counterparties'
+import CounterpartyDialog from '../../components/counterparties/CounterpartyDialog'
 
 export default {
   name: 'Index',
@@ -50,5 +62,17 @@ export default {
       { text: 'Название', sortable: false, value: 'attributes.display_name' },
     ],
   }),
+  methods: {
+    async createCounterparty(openPage = true) {
+      const dialog = await this.$dialog.showAndWait(CounterpartyDialog)
+
+      if (dialog !== false) {
+        this.$store.dispatch('counterparties/create', dialog).then(() => {
+          const counterparty = this.$store.getters['counterparties/lastCreated']
+          return openPage && this.openUserPage(counterparty)
+        })
+      }
+    },
+  },
 }
 </script>
