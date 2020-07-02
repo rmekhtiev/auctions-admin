@@ -61,6 +61,12 @@ export default {
             name: 'counterparties',
           },
         },
+        auctions: {
+          icon: 'mdi-gavel',
+          to: {
+            name: 'auctions',
+          },
+        },
       },
     },
   }),
