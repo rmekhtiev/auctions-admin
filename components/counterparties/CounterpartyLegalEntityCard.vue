@@ -3,7 +3,7 @@
     <v-card>
       <v-card-text>
         <div class="overline">
-          Юридическое лицо
+          {{ $t('counterparties.types.UL') }}
         </div>
       </v-card-text>
       <v-list-item>
@@ -32,7 +32,7 @@
             {{ counterparty.attributes.inn }}
           </v-list-item-title>
           <v-list-item-subtitle>
-            УИН
+            УНП
           </v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>

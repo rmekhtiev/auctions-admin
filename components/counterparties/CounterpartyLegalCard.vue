@@ -1,16 +1,17 @@
 <template>
-  <div>
-    <CounterpartyLegalEntityCard
-      :counterparty="counterparty"
-    ></CounterpartyLegalEntityCard>
+  <div v-if="counterparty.attributes._type === 'UL'">
+    <CounterpartyLegalEntityCard :counterparty="counterparty" />
   </div>
 </template>
 
 <script>
-import CounterpartyLegalEntityCard from '../../components/counterparties/CounterpartyLegalEntityCard'
 export default {
   name: 'CounterpartyLegalCard',
-  components: { CounterpartyLegalEntityCard },
+  components: {
+    // for lazy-loading
+    CounterpartyLegalEntityCard: () =>
+      import('@/components/counterparties/CounterpartyLegalEntityCard'),
+  },
   props: {
     counterparty: {
       type: Object,

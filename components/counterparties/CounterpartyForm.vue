@@ -1,17 +1,16 @@
 <template>
   <v-form>
     <v-text-field
-      v-model="value.type"
+      v-model="value._type"
       label="Тип"
       placeholder="Введите тип"
       :value="'UL'"
     />
     <v-text-field v-model="value.inn" label="УНП" placeholder="Введите УНП" />
-    <v-text-field v-model="value.egr" label="ЕГР" placeholder="Введите ЕГР" />
     <v-text-field
       v-model="value.egr_date"
-      label="Дата выдачи ЕГР"
-      placeholder="Введите дату выдачи ЕГР"
+      label="Дата ЕГР"
+      placeholder="Введите дату внесения в ЕГР"
     />
     <v-text-field
       v-model="full_name"
@@ -49,21 +48,16 @@ export default {
     name: {},
   }),
   watch: {
-    full_name() {
-      // todo
-      Object.assign(this.name, { full_name: this.full_name })
+    full_name(val) {
+      // ? todo: как поправить?
+      Object.assign(this.name, { full_name: val })
       Object.assign(this.value, { name: this.name })
     },
-    short_name() {
-      // todo
-      Object.assign(this.name, { short_name: this.short_name })
+    short_name(val) {
+      // ? todo: как поправить?
+      Object.assign(this.name, { short_name: val })
       Object.assign(this.value, { name: this.name })
     },
-  },
-  mounted() {
-    setTimeout(() => {
-      this.$refs.inn.focus()
-    }, 100)
   },
 }
 </script>

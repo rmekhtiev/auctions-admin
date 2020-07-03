@@ -8,8 +8,8 @@
 <script>
 import CounterpartyInfoCard from '../../components/counterparties/CounterpartyInfoCard'
 import CounterpartyLegalCard from '../../components/counterparties/CounterpartyLegalCard'
+
 export default {
-  name: 'Id',
   components: { CounterpartyLegalCard, CounterpartyInfoCard },
   fetch: ({ store, params }) => {
     return Promise.all([

@@ -29,6 +29,7 @@
             :server-items-length="totalItems"
             :loading="itemsLoading"
             multi-sort
+            @click:row="(_e, { item }) => openCounterpartyPage(item)"
           >
           </v-data-table>
         </v-card>
@@ -58,8 +59,8 @@ export default {
   mixins: [serverSidePaginated({ resource: 'counterparties' }), counterparties],
   data: () => ({
     headers: [
-      { text: 'Тип', value: 'attributes.type' },
       { text: 'Название', sortable: false, value: 'attributes.display_name' },
+      { text: 'Тип', value: 'attributes._type' },
     ],
   }),
   methods: {

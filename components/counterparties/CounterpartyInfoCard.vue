@@ -20,18 +20,21 @@
       </v-list-item>
       <v-list-item>
         <v-list-item-icon>
-          <v-icon>mdi-information-outline</v-icon>
+          <v-icon>mdi-pound</v-icon>
         </v-list-item-icon>
         <v-list-item-content>
           <v-list-item-title>
-            {{ counterparty.attributes.type }}
+            {{ counterparty.attributes.inn }}
           </v-list-item-title>
         </v-list-item-content>
       </v-list-item>
       <v-list-item>
+        <v-list-item-icon>
+          <v-icon>mdi-information-outline</v-icon>
+        </v-list-item-icon>
         <v-list-item-content>
           <v-list-item-title>
-            {{ counterparty.attributes.inn }}
+            {{ $t(`counterparties.types.${counterparty.attributes._type}`) }}
           </v-list-item-title>
         </v-list-item-content>
       </v-list-item>
