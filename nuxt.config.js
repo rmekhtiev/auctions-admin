@@ -65,7 +65,7 @@ export default {
    */
   axios: {
     host: 'auctions-backend.test',
-    prefix: '/api/',
+    prefix: '/api/v1/',
     port: '80',
   },
 
@@ -88,7 +88,7 @@ export default {
             propertyName: 'jwt',
           },
           logout: { url: '/auth/token', method: 'delete' },
-          user: { url: '/auth/me', method: 'get', propertyName: 'data' },
+          user: { url: '/auth/me', method: 'get', propertyName: '' },
         },
       },
     },
