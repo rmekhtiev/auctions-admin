@@ -2,16 +2,11 @@
   <v-list-item v-if="$auth.loggedIn" two-line>
     <v-list-item-avatar>
       <v-avatar color="primary">
-        <img
-          :src="$auth.user.attributes.avatar"
-          :alt="$auth.user.attributes.login"
-        />
+        <img :src="$auth.user.avatar" :alt="$auth.user.login" />
       </v-avatar>
     </v-list-item-avatar>
     <v-list-item-content>
-      <v-list-item-title class="title">
-        {{ $auth.user.attributes.name }}
-      </v-list-item-title>
+      <v-list-item-title class="title" v-text="`@${$auth.user.login}`" />
       <v-list-item-subtitle>
         subtext
       </v-list-item-subtitle>
