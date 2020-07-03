@@ -58,6 +58,7 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
     '@nuxtjs/auth',
+    'vuetify-dialog/nuxt',
   ],
   /*
    ** Axios module configuration

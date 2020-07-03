@@ -45,18 +45,15 @@
             :server-items-length="totalItems"
             :loading="itemsLoading"
             multi-sort
-          >
-            <template v-slot:item="scope">
-              <user-row-item v-bind="scope" />
-            </template>
-          </v-data-table>
+            @click:row="(_e, { item }) => openUserPage(item)"
+          ></v-data-table>
         </v-card>
       </v-col>
     </v-row>
 
-    <!-- <v-btn color="primary" fixed bottom right dark fab @click="createUser()">
+    <v-btn color="primary" fixed bottom right dark fab @click="createUser()">
       <v-icon>mdi-plus</v-icon>
-    </v-btn> -->
+    </v-btn>
   </div>
 </template>
 
@@ -64,6 +61,7 @@
 import UserRowItem from '../../components/user/UserRowItem'
 import serverSidePaginated from '../../mixins/serverSidePaginated'
 import users from '../../mixins/resources/users'
+import UserDialog from '~/components/user/UserDialog'
 
 export default {
   components: { UserRowItem },
@@ -74,5 +72,17 @@ export default {
       { text: 'Роль', sortable: false, value: 'attributes.role' },
     ],
   }),
+  methods: {
+    async createUser(openPage = true) {
+      const dialog = await this.$dialog.showAndWait(UserDialog)
+
+      if (dialog !== false) {
+        this.$store.dispatch('users/create', dialog).then(() => {
+          const user = this.$store.getters['users/lastCreated']
+          return openPage && this.openUserPage(user)
+        })
+      }
+    },
+  },
 }
 </script>
