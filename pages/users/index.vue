@@ -45,11 +45,8 @@
             :server-items-length="totalItems"
             :loading="itemsLoading"
             multi-sort
-          >
-            <template v-slot:item="scope">
-              <user-row-item v-bind="scope" />
-            </template>
-          </v-data-table>
+            @click:row="(_e, { item }) => openUserPage(item)"
+          ></v-data-table>
         </v-card>
       </v-col>
     </v-row>
