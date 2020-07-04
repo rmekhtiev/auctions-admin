@@ -64,6 +64,7 @@ import users from '../../mixins/resources/users'
 import UserDialog from '~/components/user/UserDialog'
 
 export default {
+  // eslint-disable-next-line vue/no-unused-components
   components: { UserRowItem },
   mixins: [serverSidePaginated({ resource: 'users' }), users],
   data: () => ({
