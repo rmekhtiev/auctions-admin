@@ -55,6 +55,12 @@ export default {
             name: 'users',
           },
         },
+        counterparties: {
+          icon: 'mdi-account-tie',
+          to: {
+            name: 'counterparties',
+          },
+        },
       },
     },
   }),

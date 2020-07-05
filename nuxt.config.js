@@ -89,7 +89,7 @@ export default {
             propertyName: 'jwt',
           },
           logout: { url: '/auth/token', method: 'delete' },
-          user: { url: '/auth/me', method: 'get', propertyName: '' },
+          user: { url: '/auth/me', method: 'get', propertyName: 'data' },
         },
       },
     },
