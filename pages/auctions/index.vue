@@ -29,10 +29,17 @@
             :loading="itemsLoading"
             multi-sort
           >
-            <template v-slot:item.attributes.counterparty_id="{ item }">
+            <template v-slot:item.relationships.organizer.data.id="{ item }">
               {{
                 $store.getters['counterparties/byId']({
-                  id: item.attributes.counterparty_id,
+                  id: item.relationships.organizer.data.id,
+                }).attributes.display_name
+              }}
+            </template>
+            <template v-slot:item.relationships.seller.data.id="{ item }">
+              {{
+                $store.getters['counterparties/byId']({
+                  id: item.relationships.seller.data.id,
                 }).attributes.display_name
               }}
             </template>
@@ -52,8 +59,11 @@ export default {
   mixins: [serverSidePaginated({ resource: 'auctions' }), users],
   data: () => ({
     headers: [
-      { text: 'Аукцион', value: 'id' },
-      { text: 'Контрагент', value: 'attributes.counterparty_id' },
+      { text: '№', value: 'id' },
+      { text: 'Название', value: 'attributes.title' },
+      { text: 'Начало торгов', value: 'attributes.starts_at' },
+      { text: 'Продавец', value: 'relationships.seller.data.id' },
+      { text: 'Организатор', value: 'relationships.organizer.data.id' },
     ],
   }),
 }
