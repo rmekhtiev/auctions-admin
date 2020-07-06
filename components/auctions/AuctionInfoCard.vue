@@ -26,7 +26,7 @@
       <v-list-item>
         <v-list-item-content>
           <v-list-item-title>
-            {{ auction.attributes.starts_at }}
+            {{ $moment(auction.attributes.starts_at).format('LLL') }}
           </v-list-item-title>
           <v-list-item-subtitle>
             Начало
@@ -36,7 +36,7 @@
       <v-list-item>
         <v-list-item-content>
           <v-list-item-title>
-            {{ auction.attributes.ends_at }}
+            {{ $moment(auction.attributes.ends_at).format('LLL') }}
           </v-list-item-title>
           <v-list-item-subtitle>
             Конец

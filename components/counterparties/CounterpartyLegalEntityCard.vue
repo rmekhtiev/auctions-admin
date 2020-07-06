@@ -39,7 +39,7 @@
       <v-list-item-content>
         <v-list-item-title>
           {{ counterparty.attributes.egr }} от
-          {{ counterparty.attributes.egr_date }}
+          {{ $moment(counterparty.attributes.egr_date).format('LL') }}
         </v-list-item-title>
         <v-list-item-subtitle>
           ЕГР
