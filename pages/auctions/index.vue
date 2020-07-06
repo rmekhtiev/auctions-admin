@@ -30,6 +30,9 @@
             multi-sort
             @click:row="(_e, { item }) => openAuctionPage(item)"
           >
+            <template v-slot:item.attributes.starts_at="{ item }">
+              {{ $moment(item.attributes.starts_at).format('lll') }}
+            </template>
             <template v-slot:item.relationships.organizer.data.id="{ item }">
               {{
                 $store.getters['counterparties/byId']({
