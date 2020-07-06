@@ -1,10 +1,10 @@
 <template>
   <v-form>
-    <v-text-field
+    <v-select
       v-model="value._type"
       label="Тип"
       placeholder="Введите тип"
-      :value="'UL'"
+      :items="types"
     />
     <v-text-field v-model="value.inn" label="УНП" placeholder="Введите УНП" />
     <v-text-field
@@ -46,6 +46,7 @@ export default {
     full_name: '',
     short_name: '',
     name: {},
+    types: ['UL'],
   }),
   watch: {
     full_name(val) {
