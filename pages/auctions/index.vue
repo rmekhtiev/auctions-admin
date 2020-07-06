@@ -28,6 +28,7 @@
             :server-items-length="totalItems"
             :loading="itemsLoading"
             multi-sort
+            @click:row="(_e, { item }) => openAuctionPage(item)"
           >
             <template v-slot:item.relationships.organizer.data.id="{ item }">
               {{
@@ -53,10 +54,11 @@
 <script>
 import serverSidePaginated from '~/mixins/serverSidePaginated'
 import users from '~/mixins/resources/users'
+import auctions from '~/mixins/resources/auctions'
 
 export default {
   name: 'Index',
-  mixins: [serverSidePaginated({ resource: 'auctions' }), users],
+  mixins: [serverSidePaginated({ resource: 'auctions' }), users, auctions],
   data: () => ({
     headers: [
       { text: '№', value: 'id' },

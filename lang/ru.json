@@ -15,7 +15,8 @@
       "title": "Управление",
       "items": {
         "users": "Пользователи",
-        "counterparties": "Контрагенты"
+        "counterparties": "Контрагенты",
+        "auctions": "Аукционы"
       }
     }
   },

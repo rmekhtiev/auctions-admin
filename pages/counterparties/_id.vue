@@ -1,7 +1,13 @@
 <template>
   <div id="counterparty">
-    <counterparty-info-card :counterparty="counterparty" />
-    <counterparty-legal-card :counterparty="counterparty" />
+    <v-row>
+      <v-col sm="12" md="6" xl="4">
+        <counterparty-info-card :counterparty="counterparty" />
+      </v-col>
+      <v-col sm="12" md="6" xl="4">
+        <counterparty-legal-card :counterparty="counterparty" />
+      </v-col>
+    </v-row>
   </div>
 </template>
 
