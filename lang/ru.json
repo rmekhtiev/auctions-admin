@@ -8,15 +8,15 @@
   "menu": {
     "defaultItems": {
       "items": {
-        "home": "Главная"
+        "home": "Главная",
+        "auctions": "Аукционы"
       }
     },
     "managementItems": {
       "title": "Управление",
       "items": {
         "users": "Пользователи",
-        "counterparties": "Контрагенты",
-        "auctions": "Аукционы"
+        "counterparties": "Контрагенты"
       }
     }
   },
