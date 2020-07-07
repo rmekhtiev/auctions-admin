@@ -55,7 +55,14 @@
           v-on="on"
         ></v-text-field>
       </template>
-      <v-time-picker v-if="modal_start" v-model="starts_at" full-width>
+      <v-time-picker
+        v-if="modal_start"
+        v-model="starts_at"
+        full-width
+        min="10:00"
+        max="18:00"
+        format="24hr"
+      >
         <v-spacer></v-spacer>
         <v-btn text color="primary" @click="modal_start = false">Отмена</v-btn>
         <v-btn text color="primary" @click="$refs.dialog_start.save(starts_at)"
@@ -79,7 +86,14 @@
           v-on="on"
         ></v-text-field>
       </template>
-      <v-time-picker v-if="modal_end" v-model="ends_at" full-width>
+      <v-time-picker
+        v-if="modal_end"
+        v-model="ends_at"
+        full-width
+        min="10:00"
+        max="18:00"
+        format="24hr"
+      >
         <v-spacer></v-spacer>
         <v-btn text color="primary" @click="modal_end = false">Отмена</v-btn>
         <v-btn text color="primary" @click="$refs.dialog_end.save(ends_at)"
