@@ -2,7 +2,7 @@
   <v-card>
     <v-card-text>
       <div class="overline">
-        {{ $t('counterparties.types.UL') }}
+        {{ heading }}
       </div>
     </v-card-text>
     <v-list-item>
@@ -56,6 +56,10 @@ export default {
     counterparty: {
       type: Object,
       required: true,
+    },
+    heading: {
+      type: String,
+      default: 'Юридическое лицо',
     },
   },
 }

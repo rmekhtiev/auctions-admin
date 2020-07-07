@@ -5,7 +5,7 @@
         <auction-info-card :auction="auction" />
       </v-col>
       <v-col sm="12" md="6">
-        <counterparty-info-card
+        <counterparty-legal-card
           :counterparty="
             $store.getters['counterparties/byId']({
               id: auction.relationships.organizer.data.id,
@@ -14,7 +14,7 @@
           :heading="'Организатор'"
           class="mb-8"
         />
-        <counterparty-info-card
+        <counterparty-legal-card
           :counterparty="
             $store.getters['counterparties/byId']({
               id: auction.relationships.seller.data.id,
@@ -29,9 +29,9 @@
 
 <script>
 import AuctionInfoCard from '~/components/auctions/AuctionInfoCard'
-import CounterpartyInfoCard from '~/components/counterparties/CounterpartyInfoCard'
+import CounterpartyLegalCard from '~/components/counterparties/CounterpartyLegalCard'
 export default {
-  components: { CounterpartyInfoCard, AuctionInfoCard },
+  components: { CounterpartyLegalCard, AuctionInfoCard },
   fetch: ({ store, params }) => {
     return Promise.all([
       store.dispatch('auctions/loadById', {
