@@ -35,7 +35,11 @@ export default {
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
    */
-  plugins: ['~/plugins/vue-i18n', '~/plugins/reststate-vuex'],
+  plugins: [
+    '~/plugins/vue-i18n',
+    '~/plugins/reststate-vuex',
+    '~/plugins/axios',
+  ],
   /*
    ** Auto import components
    ** See https://nuxtjs.org/api/configuration-components
@@ -59,7 +63,14 @@ export default {
     '@nuxtjs/pwa',
     '@nuxtjs/auth',
     'vuetify-dialog/nuxt',
+    '@nuxtjs/toast',
   ],
+
+  toast: {
+    position: 'top-right',
+    duration: 3000,
+  },
+
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
