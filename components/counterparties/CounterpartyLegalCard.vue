@@ -1,6 +1,9 @@
 <template>
   <div v-if="counterparty.attributes._type === 'UL'">
-    <CounterpartyLegalEntityCard :counterparty="counterparty" />
+    <CounterpartyLegalEntityCard
+      :counterparty="counterparty"
+      :heading="heading"
+    />
   </div>
 </template>
 
@@ -16,6 +19,10 @@ export default {
     counterparty: {
       type: Object,
       required: true,
+    },
+    heading: {
+      type: String,
+      required: false,
     },
   },
 }

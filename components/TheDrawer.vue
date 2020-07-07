@@ -47,18 +47,24 @@ export default {
             name: 'index',
           },
         },
-      },
-      managementItems: {
-        users: {
-          icon: 'mdi-account-multiple-outline',
+        auctions: {
+          icon: 'mdi-gavel',
           to: {
-            name: 'users',
+            name: 'auctions',
           },
         },
+      },
+      managementItems: {
         counterparties: {
           icon: 'mdi-account-tie',
           to: {
             name: 'counterparties',
+          },
+        },
+        users: {
+          icon: 'mdi-account-multiple-outline',
+          to: {
+            name: 'users',
           },
         },
       },

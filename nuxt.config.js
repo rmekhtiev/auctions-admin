@@ -59,6 +59,7 @@ export default {
     '@nuxtjs/pwa',
     '@nuxtjs/auth',
     'vuetify-dialog/nuxt',
+    '@nuxtjs/moment',
   ],
   /*
    ** Axios module configuration
@@ -113,6 +114,11 @@ export default {
 
   router: {
     middleware: ['auth'],
+  },
+
+  moment: {
+    locales: ['ru'],
+    defaultTimezone: 'Europe/Minsk',
   },
 
   /*
