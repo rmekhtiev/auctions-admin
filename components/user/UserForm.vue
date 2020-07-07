@@ -22,6 +22,7 @@
       label="Роль"
       required
     >
+      <template v-slot:item="{ item }">{{ item }}</template>
     </v-select>
   </v-form>
 </template>

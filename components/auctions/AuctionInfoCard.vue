@@ -37,23 +37,12 @@
         </v-list-item-icon>
         <v-list-item-content>
           <v-list-item-title>
-            {{ $moment(auction.attributes.starts_at).format('LLL') }}
+            {{ $moment(auction.attributes.starts_at).format('LL') }},
+            {{ $moment(auction.attributes.starts_at).format('LT') }} -
+            {{ $moment(auction.attributes.ends_at).format('LT') }}
           </v-list-item-title>
           <v-list-item-subtitle>
-            Начало
-          </v-list-item-subtitle>
-        </v-list-item-content>
-      </v-list-item>
-      <v-list-item>
-        <v-list-item-icon>
-          <v-icon>mdi-calendar-outline</v-icon>
-        </v-list-item-icon>
-        <v-list-item-content>
-          <v-list-item-title>
-            {{ $moment(auction.attributes.ends_at).format('LLL') }}
-          </v-list-item-title>
-          <v-list-item-subtitle>
-            Конец
+            Дата проведения
           </v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>

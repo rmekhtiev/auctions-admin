@@ -1,10 +1,10 @@
 <template>
   <div id="counterparty">
     <v-row>
-      <v-col sm="12" md="6" xl="4">
+      <v-col sm="12" md="6" lg="4">
         <counterparty-info-card :counterparty="counterparty" />
       </v-col>
-      <v-col sm="12" md="6" xl="4">
+      <v-col sm="12" md="6" lg="4">
         <counterparty-legal-card :counterparty="counterparty" />
       </v-col>
     </v-row>

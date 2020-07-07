@@ -31,7 +31,9 @@
             @click:row="(_e, { item }) => openAuctionPage(item)"
           >
             <template v-slot:item.attributes.starts_at="{ item }">
-              {{ $moment(item.attributes.starts_at).format('lll') }}
+              {{ $moment(item.attributes.starts_at).format('LL') }},
+              {{ $moment(item.attributes.starts_at).format('LT') }} -
+              {{ $moment(item.attributes.ends_at).format('LT') }}
             </template>
             <template v-slot:item.relationships.organizer.data.id="{ item }">
               {{
@@ -68,7 +70,7 @@ export default {
   mixins: [serverSidePaginated({ resource: 'auctions' }), users, auctions],
   data: () => ({
     headers: [
-      { text: '№', value: 'id' },
+      { text: '№', value: 'id', },
       { text: 'Название', value: 'attributes.title' },
       { text: 'Начало торгов', value: 'attributes.starts_at' },
       { text: 'Продавец', value: 'relationships.seller.data.id' },

@@ -31,6 +31,9 @@
             multi-sort
             @click:row="(_e, { item }) => openCounterpartyPage(item)"
           >
+            <template v-slot:item.attributes._type="{ item }">
+              {{ $t(`counterparties.types.${item.attributes._type}`) }}
+            </template>
           </v-data-table>
         </v-card>
       </v-col>

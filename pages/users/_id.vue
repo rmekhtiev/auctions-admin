@@ -1,6 +1,10 @@
 <template>
   <div id="user" class="mb-16">
-    <UserInfoCard :user="user"></UserInfoCard>
+    <v-row>
+      <v-col sm="12" md="6" lg="4">
+        <UserInfoCard :user="user"></UserInfoCard>
+      </v-col/>
+    </v-row>
   </div>
 </template>
 

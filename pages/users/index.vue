@@ -25,7 +25,7 @@
           multiple
           clearable
           name="roles"
-          item-value="slug"
+          item-value="value"
           item-text="title"
           @input="loadItems()"
         />
@@ -46,7 +46,11 @@
             :loading="itemsLoading"
             multi-sort
             @click:row="(_e, { item }) => openUserPage(item)"
-          ></v-data-table>
+          >
+            <template v-slot:item.attributes.role="{ item }">
+              {{ $t(`roles.${item.attributes.role}`) }}
+            </template>
+          </v-data-table>
         </v-card>
       </v-col>
     </v-row>

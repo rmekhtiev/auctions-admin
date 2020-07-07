@@ -1,10 +1,10 @@
 export default {
   data: () => ({
     userRoles: [
-      { title: 'Администратор', slug: 'ADMIN' },
-      { title: 'Модератор', slug: 'MODERATOR' },
-      { title: 'Антикризисный', slug: 'BANKRUPTCY_MANGER' },
-      { title: 'Пользователь', slug: 'USER' },
+      { title: 'Администратор', value: 'ADMIN' },
+      { title: 'Модератор', value: 'MODERATOR' },
+      { title: 'Антикризисный', value: 'BANKRUPTCY_MANGER' },
+      { title: 'Пользователь', value: 'USER' },
     ],
   }),
   computed: {},
