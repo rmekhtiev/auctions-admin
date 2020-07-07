@@ -6,22 +6,11 @@
       </v-col>
       <v-col sm="12" md="6">
         <counterparty-legal-card
-          :counterparty="
-            $store.getters['counterparties/byId']({
-              id: auction.relationships.organizer.data.id,
-            })
-          "
+          :counterparty="organizer"
           :heading="'Организатор'"
           class="mb-8"
         />
-        <counterparty-legal-card
-          :counterparty="
-            $store.getters['counterparties/byId']({
-              id: auction.relationships.seller.data.id,
-            })
-          "
-          :heading="'Продавец'"
-        />
+        <counterparty-legal-card :counterparty="seller" :heading="'Продавец'" />
       </v-col>
     </v-row>
   </div>
@@ -47,6 +36,16 @@ export default {
     auction() {
       return this.$store.getters['auctions/byId']({
         id: this.$route.params.id,
+      })
+    },
+    seller() {
+      return this.$store.getters['counterparties/byId']({
+        id: this.auction.relationships.seller.data.id,
+      })
+    },
+    organizer() {
+      return this.$store.getters['counterparties/byId']({
+        id: this.auction.relationships.organizer.data.id,
       })
     },
   },

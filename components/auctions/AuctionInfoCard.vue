@@ -62,7 +62,7 @@
         nuxt
         :to="{
           name: 'counterparties-id',
-          params: { id: auction.relationships.seller.data.id },
+          params: { id: seller.id },
         }"
       >
         <v-list-item-icon>
@@ -70,11 +70,7 @@
         </v-list-item-icon>
         <v-list-item-content>
           <v-list-item-title>
-            {{
-              $store.getters['counterparties/byId']({
-                id: auction.relationships.seller.data.id,
-              }).attributes.display_name
-            }}
+            {{ seller.attributes.display_name }}
           </v-list-item-title>
           <v-list-item-subtitle>
             Продавец
@@ -86,7 +82,7 @@
         nuxt
         :to="{
           name: 'counterparties-id',
-          params: { id: auction.relationships.organizer.data.id },
+          params: { id: organizer.id },
         }"
       >
         <v-list-item-icon>
@@ -94,11 +90,7 @@
         </v-list-item-icon>
         <v-list-item-content>
           <v-list-item-title>
-            {{
-              $store.getters['counterparties/byId']({
-                id: auction.relationships.organizer.data.id,
-              }).attributes.display_name
-            }}
+            {{ organizer.attributes.display_name }}
           </v-list-item-title>
           <v-list-item-subtitle>
             Организатор
@@ -116,6 +108,18 @@ export default {
     auction: {
       type: Object,
       required: true,
+    },
+  },
+  computed: {
+    seller() {
+      return this.$store.getters['counterparties/byId']({
+        id: this.auction.relationships.seller.data.id,
+      })
+    },
+    organizer() {
+      return this.$store.getters['counterparties/byId']({
+        id: this.auction.relationships.organizer.data.id,
+      })
     },
   },
 }
