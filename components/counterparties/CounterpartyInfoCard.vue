@@ -2,7 +2,7 @@
   <v-card>
     <v-card-text>
       <div class="overline">
-        {{ heading ? heading : 'Контрагент' }}
+        {{ heading }}
       </div>
     </v-card-text>
     <v-list-item>
@@ -50,7 +50,7 @@ export default {
     },
     heading: {
       type: String,
-      required: false,
+      default: 'Контрагент',
     },
   },
 }
