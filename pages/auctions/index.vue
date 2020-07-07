@@ -73,7 +73,7 @@ export default {
   mixins: [serverSidePaginated({ resource: 'auctions' }), users, auctions],
   data: () => ({
     headers: [
-      { text: '№', value: 'id' },
+      { text: '№', value: 'id', },
       { text: 'Название', value: 'attributes.title' },
       { text: 'Начало торгов', value: 'attributes.starts_at' },
       { text: 'Продавец', value: 'relationships.seller.data.id' },
