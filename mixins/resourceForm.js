@@ -15,13 +15,11 @@ export default {
           return pattern.test(value) || 'Неверный УНП'
         },
       ],
-      phone: [
-        (value) => !!value || 'Это поле обязательное',
-        (value) => {
-          const pattern = /[0-9]{9}/
-          return pattern.test(value) || 'Неверный телефон'
-        },
-      ],
+      phone: [(value) => !!value || 'Это поле обязательное'],
+      full_name: [(value) => !!value || 'Это поле обязательное'],
+      short_name: [(value) => !!value || 'Это поле обязательное'],
+      egr_date: [(value) => !!value || 'Это поле обязательное'],
+      type: [(value) => !!value || 'Это поле обязательное'],
     },
   }),
   props: {

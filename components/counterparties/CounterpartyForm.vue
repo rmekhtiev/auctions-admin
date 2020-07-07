@@ -5,6 +5,7 @@
       label="Тип"
       placeholder="Введите тип"
       :items="types"
+      :rules="rules.type"
     >
     </v-select>
     <v-text-field
@@ -27,6 +28,7 @@
           v-model="value.egr_date"
           label="Дата ЕГР"
           placeholder="Введите дату внесения в ЕГР"
+          :rules="rules.egr_date"
           readonly
           v-bind="attrs"
           v-on="on"
@@ -42,11 +44,13 @@
       v-model="full_name"
       label="Полное название организации"
       placeholder="Введите полное название организации"
+      :rules="rules.full_name"
     />
     <v-text-field
       v-model="short_name"
       label="Краткое название организации"
       placeholder="Введите краткое название организации"
+      :rules="rules.short_name"
     />
     <v-text-field
       v-model="value.email"
@@ -59,6 +63,7 @@
       label="Номер телефона"
       placeholder="Введите номер телефона"
       @keypress="onlyNumber"
+      :rules="rules.phone"
     />
   </v-form>
 </template>
