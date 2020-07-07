@@ -51,6 +51,9 @@
         </v-card>
       </v-col>
     </v-row>
+    <v-btn color="primary" fixed bottom right dark fab @click="createAuction()">
+      <v-icon>mdi-plus</v-icon>
+    </v-btn>
   </div>
 </template>
 
@@ -58,6 +61,7 @@
 import serverSidePaginated from '~/mixins/serverSidePaginated'
 import users from '~/mixins/resources/users'
 import auctions from '~/mixins/resources/auctions'
+import AuctionDialog from '~/components/auctions/AuctionDialog'
 
 export default {
   name: 'Index',
@@ -71,5 +75,34 @@ export default {
       { text: 'Организатор', value: 'relationships.organizer.data.id' },
     ],
   }),
+  methods: {
+    async createAuction(openPage = true) {
+      const dialog = await this.$dialog.showAndWait(AuctionDialog)
+
+      if (dialog !== false) {
+        const formData = {
+          attributes: dialog.attributes,
+          relationships: {
+            seller: {
+              data: {
+                type: 'counterparties',
+                id: `${dialog.attributes.seller_id}`,
+              },
+            },
+            organizer: {
+              data: {
+                type: 'counterparties',
+                id: `${dialog.attributes.organizer_id}`,
+              },
+            },
+          },
+        }
+        this.$store.dispatch('auctions/create', formData).then(() => {
+          const auction = this.$store.getters['auctions/lastCreated']
+          return openPage && this.openAuctionPage(auction)
+        })
+      }
+    },
+  },
 }
 </script>
