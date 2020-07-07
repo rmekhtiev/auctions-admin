@@ -7,6 +7,11 @@
     </v-card-text>
     <v-list>
       <v-list-item>
+        <v-list-item-avatar>
+          <v-avatar color="primary">
+            <v-icon>mdi-format-title</v-icon>
+          </v-avatar>
+        </v-list-item-avatar>
         <v-list-item-content>
           <v-list-item-title>
             {{ auction.attributes.title }}
@@ -14,6 +19,9 @@
         </v-list-item-content>
       </v-list-item>
       <v-list-item>
+        <v-list-item-icon>
+          <v-icon>mdi-information-outline</v-icon>
+        </v-list-item-icon>
         <v-list-item-content>
           <v-list-item-title>
             Банкротство
@@ -24,6 +32,9 @@
         </v-list-item-content>
       </v-list-item>
       <v-list-item>
+        <v-list-item-icon>
+          <v-icon>mdi-calendar-outline</v-icon>
+        </v-list-item-icon>
         <v-list-item-content>
           <v-list-item-title>
             {{ $moment(auction.attributes.starts_at).format('LLL') }}
@@ -34,6 +45,9 @@
         </v-list-item-content>
       </v-list-item>
       <v-list-item>
+        <v-list-item-icon>
+          <v-icon>mdi-calendar-outline</v-icon>
+        </v-list-item-icon>
         <v-list-item-content>
           <v-list-item-title>
             {{ $moment(auction.attributes.ends_at).format('LLL') }}
@@ -51,6 +65,9 @@
           params: { id: auction.relationships.seller.data.id },
         }"
       >
+        <v-list-item-icon>
+          <v-icon>mdi-briefcase-outline</v-icon>
+        </v-list-item-icon>
         <v-list-item-content>
           <v-list-item-title>
             {{
@@ -72,6 +89,9 @@
           params: { id: auction.relationships.organizer.data.id },
         }"
       >
+        <v-list-item-icon>
+          <v-icon>mdi-briefcase-outline</v-icon>
+        </v-list-item-icon>
         <v-list-item-content>
           <v-list-item-title>
             {{
