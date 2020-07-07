@@ -1,5 +1,9 @@
 <template>
-  <dialog-card title="Create" :actions="actions" :handle="handleClick">
+  <dialog-card
+    title="Создание контрагента"
+    :actions="actions"
+    :handle="handleClick"
+  >
     <counterparty-form v-model="editedValue.attributes" />
   </dialog-card>
 </template>

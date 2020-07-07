@@ -1,5 +1,9 @@
 <template>
-  <dialog-card title="Create" :actions="actions" :handle="handleClick">
+  <dialog-card
+    title="Создание аукциона"
+    :actions="actions"
+    :handle="handleClick"
+  >
     <auction-form v-model="editedValue.attributes" />
   </dialog-card>
 </template>
