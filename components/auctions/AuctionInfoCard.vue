@@ -8,7 +8,7 @@
     <v-list>
       <v-list-item>
         <v-list-item-avatar>
-          <v-avatar color="primary">
+          <v-avatar>
             <v-icon>mdi-format-title</v-icon>
           </v-avatar>
         </v-list-item-avatar>
