@@ -18,10 +18,8 @@
             v-if="!user.attributes.verified_at"
             class="red--text text--darken-4"
           >
-            <v-icon x-small color="red darken-4"
-              >mdi-close-circle-outline</v-icon
-            >
-            Не подтвержден
+          <v-icon x-small color="red darken-4">mdi-close-circle-outline</v-icon>
+          Не подтвержден
           </v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
