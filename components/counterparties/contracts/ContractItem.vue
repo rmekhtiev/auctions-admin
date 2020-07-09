@@ -7,7 +7,7 @@
     </v-list-item-icon>
     <v-list-item-content>
       <v-list-item-title>
-        {{ contract.attributes._type }}
+        {{ contract.attributes.title }}
         <v-btn
           v-if="!contract.attributes.sign_at"
           small
@@ -17,15 +17,13 @@
           ><v-icon>mdi-check</v-icon></v-btn
         >
       </v-list-item-title>
-      <v-list-item-subtitle
-        v-if="!contract.attributes.sign_at"
-        class="red--text text--darken-4"
-      >
-        <v-icon x-small color="red darken-4">mdi-close-circle-outline</v-icon>
-        Не подписан
-      </v-list-item-subtitle>
-      <v-list-item-subtitle v-else>
-        От {{ $moment(contract.attributes.sign_at).format('DD-MM-YYYY') }}
+      <v-list-item-subtitle>
+        <span>На {{ $t('contracts.types.' + contract.attributes._type) }}</span>
+        <span v-if="!contract.attributes.sign_at">(Не подписан)</span>
+        <span v-else
+          >от
+          {{ $moment(contract.attributes.sign_at).format('DD-MM-YYYY') }}</span
+        >
       </v-list-item-subtitle>
     </v-list-item-content>
   </v-list-item>

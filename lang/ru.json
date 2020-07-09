@@ -45,5 +45,11 @@
     "statuses": {
       "DRAFT": "Черновик"
     }
+  },
+  "contracts": {
+    "types": {
+      "NORMAL_BIDDING": "Обычные торги",
+      "BANKRUPTCY_BIDDING": "Антикрисные торги"
+    }
   }
 }
