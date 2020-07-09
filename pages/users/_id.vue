@@ -14,11 +14,7 @@
 </template>
 
 <script>
-import UserInfoCard from '~/components/user/UserInfoCard'
-import CounterpartyInfoCard from '~/components/counterparties/CounterpartyInfoCard'
 export default {
-  name: 'Id',
-  components: { CounterpartyInfoCard, UserInfoCard },
   fetch: ({ store, params }) => {
     return Promise.all([
       store.dispatch('users/loadById', {
