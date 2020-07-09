@@ -39,6 +39,7 @@ export default {
     '~/plugins/vue-i18n',
     '~/plugins/reststate-vuex',
     '~/plugins/axios',
+    { src: '~/plugins/vue-currency-filter', ssr: false },
   ],
   /*
    ** Auto import components

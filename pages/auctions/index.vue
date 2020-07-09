@@ -35,6 +35,9 @@
               {{ $moment(item.attributes.starts_at).format('LT') }} -
               {{ $moment(item.attributes.ends_at).format('LT') }}
             </template>
+            <template v-slot:item.attributes.price_start="{ item }">
+              {{ item.attributes.price_start | currency }}
+            </template>
             <template v-slot:item.relationships.organizer.data.id="{ item }">
               {{
                 $store.getters['counterparties/byId']({
@@ -76,6 +79,7 @@ export default {
       { text: '№', value: 'id' },
       { text: 'Название', value: 'attributes.title' },
       { text: 'Начало торгов', value: 'attributes.starts_at' },
+      { text: 'Начальная цена', value: 'attributes.price_start' },
       { text: 'Продавец', value: 'relationships.seller.data.id' },
       { text: 'Организатор', value: 'relationships.organizer.data.id' },
       { text: 'Статус', value: 'attributes.status' },

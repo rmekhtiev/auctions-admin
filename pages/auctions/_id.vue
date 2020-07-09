@@ -2,7 +2,9 @@
   <div id="auction">
     <v-row>
       <v-col sm="12" md="6" lg="4">
-        <auction-info-card :auction="auction" />
+        <auction-info-card :auction="auction" class="mb-6" />
+
+        <lots-list-card :lots="lots" :auction="auction" />
       </v-col>
       <v-col sm="12" md="6" lg="4">
         <counterparty-legal-card
@@ -20,16 +22,16 @@
 </template>
 
 <script>
-import AuctionInfoCard from '~/components/auctions/AuctionInfoCard'
-import CounterpartyLegalCard from '~/components/counterparties/CounterpartyLegalCard'
 export default {
-  components: { CounterpartyLegalCard, AuctionInfoCard },
   fetch: ({ store, params }) => {
     return Promise.all([
       store.dispatch('auctions/loadById', {
         id: params.id,
-        options: {
-          // XDEBUG_SESSION_START: 'PHPSTORM'
+      }),
+      store.dispatch('lots/loadRelated', {
+        parent: {
+          id: params.id,
+          type: 'auctions',
         },
       }),
     ])
@@ -39,6 +41,11 @@ export default {
     auction() {
       return this.$store.getters['auctions/byId']({
         id: this.$route.params.id,
+      })
+    },
+    lots() {
+      return this.$store.getters['lots/related']({
+        parent: this.auction,
       })
     },
     seller() {

@@ -46,6 +46,45 @@
           </v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
+      <v-list-item>
+        <v-list-item-icon>
+          <v-icon>mdi-cash</v-icon>
+        </v-list-item-icon>
+        <v-list-item-content>
+          <v-list-item-title>
+            {{ auction.attributes.price_start | currency }}
+          </v-list-item-title>
+          <v-list-item-subtitle>
+            Начальная цена
+          </v-list-item-subtitle>
+        </v-list-item-content>
+      </v-list-item>
+      <v-list-item>
+        <v-list-item-icon>
+          <v-icon>mdi-cash-marker</v-icon>
+        </v-list-item-icon>
+        <v-list-item-content>
+          <v-list-item-title>
+            {{ auction.attributes.price_min | currency }}
+          </v-list-item-title>
+          <v-list-item-subtitle>
+            Минимальная цена
+          </v-list-item-subtitle>
+        </v-list-item-content>
+      </v-list-item>
+      <v-list-item>
+        <v-list-item-icon>
+          <v-icon>mdi-cash-refund</v-icon>
+        </v-list-item-icon>
+        <v-list-item-content>
+          <v-list-item-title>
+            {{ auction.attributes.deposit | currency }}
+          </v-list-item-title>
+          <v-list-item-subtitle>
+            Залог
+          </v-list-item-subtitle>
+        </v-list-item-content>
+      </v-list-item>
       <v-list-item
         link
         nuxt

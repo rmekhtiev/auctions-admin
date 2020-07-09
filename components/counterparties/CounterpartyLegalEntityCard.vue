@@ -12,17 +12,7 @@
             {{ counterparty.attributes.display_name }}
           </v-list-item-title>
           <v-list-item-subtitle>
-            Короткое название
-          </v-list-item-subtitle>
-        </v-list-item-content>
-      </v-list-item>
-      <v-list-item>
-        <v-list-item-content>
-          <v-list-item-title>
             {{ counterparty.attributes.name.full_name }}
-          </v-list-item-title>
-          <v-list-item-subtitle>
-            Полное название
           </v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
