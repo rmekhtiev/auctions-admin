@@ -2,10 +2,10 @@
   <div id="counterparty">
     <v-row>
       <v-col sm="12" md="6" lg="4">
-        <counterparty-info-card :counterparty="counterparty" />
+        <counterparty-info-card :counterparty="counterparty" no-link />
       </v-col>
       <v-col sm="12" md="6" lg="4">
-        <counterparty-legal-card :counterparty="counterparty" />
+        <counterparty-legal-card :counterparty="counterparty" no-link />
       </v-col>
     </v-row>
   </div>

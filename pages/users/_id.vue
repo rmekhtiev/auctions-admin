@@ -1,12 +1,12 @@
 <template>
   <div id="user" class="mb-16">
     <v-row>
-      <v-col sm="12" md="6" xl="4">
+      <v-col sm="12" md="6" lg="4">
         <UserInfoCard :user="user"></UserInfoCard>
       </v-col>
-      <v-col sm="12" md="6" xl="4">
+      <v-col sm="12" md="6" lg="4">
         <div v-for="counterparty in counterparties" :key="counterparty.id">
-          <counterparty-info-card :counterparty="counterparty" class="mb-8" />
+          <counterparty-legal-card :counterparty="counterparty" class="mb-8" />
         </div>
       </v-col>
     </v-row>

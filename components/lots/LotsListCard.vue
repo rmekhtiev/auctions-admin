@@ -69,7 +69,11 @@ export default {
           },
         }
 
-        this.$store.dispatch('lots/create', formData)
+        this.$store
+          .dispatch('lots/create', formData)
+          .then(() =>
+            this.$emit('created', this.$store.getters['lots/lastCreated'])
+          )
       }
     },
   },

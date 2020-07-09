@@ -4,7 +4,11 @@
       <v-col sm="12" md="6" lg="4">
         <auction-info-card :auction="auction" class="mb-6" />
 
-        <lots-list-card :lots="lots" :auction="auction" />
+        <lots-list-card
+          :lots="lots"
+          :auction="auction"
+          @created="loadAuction({ id: $route.params.id })"
+        />
       </v-col>
       <v-col sm="12" md="6" lg="4">
         <counterparty-legal-card
@@ -22,7 +26,11 @@
 </template>
 
 <script>
+import auctions from '~/mixins/resources/auctions'
+
 export default {
+  mixins: [auctions],
+
   fetch: ({ store, params }) => {
     return Promise.all([
       store.dispatch('auctions/loadById', {
@@ -49,15 +57,19 @@ export default {
       })
     },
     seller() {
-      return this.$store.getters['counterparties/byId']({
-        id: this.auction.relationships.seller.data.id,
+      return this.$store.getters['counterparties/related']({
+        parent: this.auction,
+        relationship: 'seller',
       })
     },
     organizer() {
-      return this.$store.getters['counterparties/byId']({
-        id: this.auction.relationships.organizer.data.id,
+      return this.$store.getters['counterparties/related']({
+        parent: this.auction,
+        relationship: 'organizer',
       })
     },
   },
+
+  method: {},
 }
 </script>
