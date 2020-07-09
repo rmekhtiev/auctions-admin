@@ -18,9 +18,9 @@
             v-if="!user.attributes.verified_at"
             class="red--text text--darken-4"
           >
-            <v-icon x-small color="red darken-4"
-              >mdi-close-circle-outline</v-icon
-            >
+            <v-icon x-small color="red darken-4">
+              mdi-close-circle-outline
+            </v-icon>
             Не подтвержден
           </v-list-item-subtitle>
         </v-list-item-content>
@@ -39,7 +39,7 @@
           <v-icon>mdi-message-text</v-icon>
         </v-list-item-icon>
       </v-list-item>
-      <v-list-item>
+      <v-list-item two-line>
         <v-list-item-icon>
           <v-icon>
             mdi-calendar
@@ -49,6 +49,9 @@
           <v-list-item-title>
             {{ $moment(user.attributes.created_at).format('ll') }}
           </v-list-item-title>
+          <v-list-item-subtitle>
+            Дата регистрации
+          </v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
     </v-list>

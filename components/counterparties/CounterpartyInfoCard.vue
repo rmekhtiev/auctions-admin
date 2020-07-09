@@ -1,10 +1,18 @@
 <template>
   <v-card>
-    <v-card-text>
+    <v-card-title>
       <div class="overline">
         {{ heading }}
       </div>
-    </v-card-text>
+      <v-spacer />
+      <v-btn
+        v-if="!noLink"
+        icon
+        :to="{ name: 'counterparties-id', params: { id: counterparty.id } }"
+      >
+        <v-icon>mdi-link-variant</v-icon>
+      </v-btn>
+    </v-card-title>
     <v-list>
       <v-list-item>
         <v-list-item-icon>
@@ -56,6 +64,10 @@ export default {
     heading: {
       type: String,
       default: 'Контрагент',
+    },
+    noLink: {
+      type: Boolean,
+      default: false,
     },
   },
 }

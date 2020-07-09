@@ -1,9 +1,6 @@
 <template>
   <div v-if="counterparty.attributes._type === 'UL'">
-    <CounterpartyLegalEntityCard
-      :counterparty="counterparty"
-      :heading="heading"
-    />
+    <CounterpartyLegalEntityCard v-bind="$props" />
   </div>
 </template>
 
@@ -22,7 +19,11 @@ export default {
     },
     heading: {
       type: String,
-      required: false,
+      default: '',
+    },
+    noLink: {
+      type: Boolean,
+      default: false,
     },
   },
 }
