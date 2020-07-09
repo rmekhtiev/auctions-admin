@@ -49,6 +49,9 @@
                 }).attributes.display_name
               }}
             </template>
+            <template v-slot:item.attributes.status="{ item }">
+              {{ $t(`auctions.statuses.${item.attributes.status}.self`) }}
+            </template>
           </v-data-table>
         </v-card>
       </v-col>
@@ -75,6 +78,7 @@ export default {
       { text: 'Начало торгов', value: 'attributes.starts_at' },
       { text: 'Продавец', value: 'relationships.seller.data.id' },
       { text: 'Организатор', value: 'relationships.organizer.data.id' },
+      { text: 'Статус', value: 'attributes.status' },
     ],
   }),
   methods: {

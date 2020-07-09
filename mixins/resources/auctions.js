@@ -16,7 +16,7 @@ export default {
       }
     },
     async updateStatus(auction, newStatus) {
-      const translation = this.$t(`auctions.statuses.${newStatus}.back`);
+      const translation = this.$t(`auctions.statuses.${newStatus}.self`)
 
       const res = await this.$dialog.confirm({
         text: `Вы уверены, что хотите обновить статус на ${translation}?`,
