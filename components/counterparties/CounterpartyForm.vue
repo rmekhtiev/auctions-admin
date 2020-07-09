@@ -36,8 +36,8 @@
       </template>
       <v-date-picker
         v-model="value.egr_date"
-        @input="menu = false"
         locale="ru"
+        @input="menu = false"
       ></v-date-picker>
     </v-menu>
     <v-text-field
@@ -62,8 +62,8 @@
       v-model="value.phone"
       label="Номер телефона"
       placeholder="Введите номер телефона"
-      @keypress="onlyNumber"
       :rules="rules.phone"
+      @keypress="onlyNumber"
     />
   </v-form>
 </template>

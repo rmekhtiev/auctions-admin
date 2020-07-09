@@ -31,7 +31,9 @@
             @click:row="(_e, { item }) => openAuctionPage(item)"
           >
             <template v-slot:item.attributes.starts_at="{ item }">
-              {{ $moment(item.attributes.starts_at).format('lll') }}
+              {{ $moment(item.attributes.starts_at).format('LL') }},
+              {{ $moment(item.attributes.starts_at).format('LT') }} -
+              {{ $moment(item.attributes.ends_at).format('LT') }}
             </template>
             <template v-slot:item.relationships.organizer.data.id="{ item }">
               {{
@@ -46,6 +48,9 @@
                   id: item.relationships.seller.data.id,
                 }).attributes.display_name
               }}
+            </template>
+            <template v-slot:item.attributes.status="{ item }">
+              {{ $t(`auctions.statuses.${item.attributes.status}.self`) }}
             </template>
           </v-data-table>
         </v-card>
@@ -73,6 +78,7 @@ export default {
       { text: 'Начало торгов', value: 'attributes.starts_at' },
       { text: 'Продавец', value: 'relationships.seller.data.id' },
       { text: 'Организатор', value: 'relationships.organizer.data.id' },
+      { text: 'Статус', value: 'attributes.status' },
     ],
   }),
   methods: {
