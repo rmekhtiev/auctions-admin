@@ -34,6 +34,16 @@
           </v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
+      <v-list-item>
+        <v-list-item-content>
+          <v-list-item-title>
+            <span>{{ counterparty.attributes.display_address }}</span>
+          </v-list-item-title>
+          <v-list-item-subtitle>
+            Адрес
+          </v-list-item-subtitle>
+        </v-list-item-content>
+      </v-list-item>
     </v-list>
   </v-card>
 </template>

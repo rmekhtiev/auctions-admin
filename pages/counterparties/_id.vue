@@ -2,10 +2,18 @@
   <div id="counterparty">
     <v-row>
       <v-col sm="12" md="6" lg="4">
-        <counterparty-info-card :counterparty="counterparty" no-link />
+        <counterparty-info-card
+          :counterparty="counterparty"
+          :address="address"
+          no-link
+        />
       </v-col>
       <v-col sm="12" md="6" lg="4">
-        <counterparty-legal-card :counterparty="counterparty" no-link />
+        <counterparty-legal-card
+          :counterparty="counterparty"
+          :address="address"
+          no-link
+        />
       </v-col>
     </v-row>
   </div>
@@ -25,6 +33,10 @@ export default {
           // XDEBUG_SESSION_START: 'PHPSTORM'
         },
       }),
+      store.dispatch('addresses/loadRelated', {
+        parent: { id: params.id, type: 'counterparties' },
+        relationship: 'address',
+      }),
     ])
   },
 
@@ -32,6 +44,15 @@ export default {
     counterparty() {
       return this.$store.getters['counterparties/byId']({
         id: this.$route.params.id,
+      })
+    },
+    address() {
+      return this.$store.getters['addresses/related']({
+        parent: {
+          id: this.$route.params.id,
+          type: 'counterparties',
+        },
+        relationship: 'address',
       })
     },
   },

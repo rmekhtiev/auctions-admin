@@ -49,6 +49,16 @@
           </v-list-item-title>
         </v-list-item-content>
       </v-list-item>
+      <v-list-item>
+        <v-list-item-icon>
+          <v-icon>mdi-home</v-icon>
+        </v-list-item-icon>
+        <v-list-item-content>
+          <v-list-item-title>
+            {{ counterparty.attributes.display_address }}
+          </v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
     </v-list>
   </v-card>
 </template>
@@ -58,6 +68,10 @@ export default {
   name: 'CounterpartyInfoCard',
   props: {
     counterparty: {
+      type: Object,
+      required: true,
+    },
+    address: {
       type: Object,
       required: true,
     },
