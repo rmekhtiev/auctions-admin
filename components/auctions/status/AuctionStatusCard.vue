@@ -34,7 +34,7 @@
 <script>
 export default {
   components: {
-    DraftStatusActions: () => import('./DraftStatusActions')
+    DraftStatusActions: () => import('./DraftStatusActions'),
   },
   props: {
     auction: {

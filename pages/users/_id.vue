@@ -3,7 +3,7 @@
     <v-row>
       <v-col sm="12" md="6" lg="4">
         <UserInfoCard :user="user"></UserInfoCard>
-      </v-col/>
+      </v-col>
     </v-row>
   </div>
 </template>
