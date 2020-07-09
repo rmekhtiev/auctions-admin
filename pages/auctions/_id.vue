@@ -4,7 +4,7 @@
       <v-col sm="12" md="6" lg="4">
         <auction-info-card :auction="auction" class="mb-6" />
 
-        <lots-list-card :lots="lots" />
+        <lots-list-card :lots="lots" :auction="auction" />
       </v-col>
       <v-col sm="12" md="6" lg="4">
         <counterparty-legal-card
@@ -22,10 +22,7 @@
 </template>
 
 <script>
-import AuctionInfoCard from '~/components/auctions/AuctionInfoCard'
-import CounterpartyLegalCard from '~/components/counterparties/CounterpartyLegalCard'
 export default {
-  components: { CounterpartyLegalCard, AuctionInfoCard },
   fetch: ({ store, params }) => {
     return Promise.all([
       store.dispatch('auctions/loadById', {

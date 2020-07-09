@@ -1,10 +1,16 @@
 <template>
   <v-card>
-    <v-card-text>
+    <v-card-title>
       <div class="overline">
         Лоты
       </div>
-    </v-card-text>
+
+      <v-spacer></v-spacer>
+
+      <v-btn v-if="auction" class="text--black" icon @click="createLot()">
+        <v-icon>mdi-plus</v-icon>
+      </v-btn>
+    </v-card-title>
 
     <v-list>
       <v-list-item
@@ -32,11 +38,39 @@
 </template>
 
 <script>
+import LotDialog from '~/components/lots/LotDialog'
+
 export default {
   props: {
     lots: {
       type: Array,
       required: true,
+    },
+    auction: {
+      type: Object,
+      default: null,
+    },
+  },
+
+  methods: {
+    async createLot() {
+      const dialog = await this.$dialog.showAndWait(LotDialog)
+
+      if (dialog !== false) {
+        const formData = {
+          attributes: dialog.attributes,
+          relationships: {
+            auction: {
+              data: {
+                type: 'auctions',
+                id: `${this.auction.id}`,
+              },
+            },
+          },
+        }
+
+        this.$store.dispatch('lots/create', formData)
+      }
     },
   },
 }
