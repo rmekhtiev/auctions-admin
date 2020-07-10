@@ -2,7 +2,6 @@
   <div v-if="counterparty.attributes._type === 'UL'">
     <CounterpartyLegalEntityCard
       :counterparty="counterparty"
-      :address="address"
       :heading="heading"
     />
   </div>
@@ -18,10 +17,6 @@ export default {
   },
   props: {
     counterparty: {
-      type: Object,
-      required: true,
-    },
-    address: {
       type: Object,
       required: true,
     },

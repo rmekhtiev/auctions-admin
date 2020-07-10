@@ -34,7 +34,7 @@
           </v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
-      <v-list-item>
+      <v-list-item v-if="counterparty.attributes.display_address">
         <v-list-item-content>
           <v-list-item-title>
             <span>{{ counterparty.attributes.display_address }}</span>
