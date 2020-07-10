@@ -14,6 +14,22 @@
           @keyup.enter="loadItems()"
         />
       </v-col>
+      <v-col sm="6" md="4" lg="3">
+        <v-select
+          v-model="filter.status"
+          :items="auctionStatuses"
+          prepend-inner-icon="mdi-account-supervisor"
+          label="Статус"
+          single-line
+          filled
+          multiple
+          clearable
+          name="status"
+          item-value="value"
+          item-text="title"
+          @input="loadItems()"
+        />
+      </v-col>
     </v-row>
     <v-row>
       <v-col>
