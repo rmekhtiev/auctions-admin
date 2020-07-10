@@ -1,10 +1,6 @@
 <template>
   <v-form>
-    <v-text-field
-      v-model="value.country_code"
-      label="Страна"
-      :rules="rules.country_code"
-    />
+    <v-text-field value="BY" disabled label="Страна" />
     <v-text-field v-model="value.state" label="Область" :rules="rules.state" />
     <v-text-field v-model="value.city" label="Город" :rules="rules.city" />
     <v-text-field

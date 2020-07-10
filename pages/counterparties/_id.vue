@@ -67,6 +67,7 @@ export default {
         const formData = dialog
         formData.attributes.addressable_id = this.counterparty.id
         formData.attributes.addressable_type = 'counterparties'
+        formData.attributes.country_code = 'BY'
 
         this.$store.dispatch('addresses/create', formData).then(() => {
           this.$store.dispatch('counterparties/loadById', {
