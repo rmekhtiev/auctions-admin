@@ -31,6 +31,17 @@
             multi-sort
             @click:row="(_e, { item }) => openCounterpartyPage(item)"
           >
+            <template v-slot:item.attributes.display_name="{ item }">
+              {{ item.attributes.display_name }}
+              <v-icon
+                v-if="item.attributes.has_signed_contracts"
+                color="green"
+                small
+                class="mb-1"
+              >
+                mdi-check-circle-outline
+              </v-icon>
+            </template>
             <template v-slot:item.attributes._type="{ item }">
               {{ $t(`counterparties.types.${item.attributes._type}`) }}
             </template>
