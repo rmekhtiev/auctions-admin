@@ -31,7 +31,12 @@
           v-on="on"
         ></v-text-field>
       </template>
-      <v-date-picker v-model="date" locale="ru" scrollable>
+      <v-date-picker
+        v-model="date"
+        locale="ru"
+        scrollable
+        :min="$moment().add(1, 'd').format('YYYY-MM-DD')"
+      >
         <v-spacer></v-spacer>
         <v-btn text color="primary" @click="modal_date = false">Отмена</v-btn>
         <v-btn text color="primary" @click="$refs.dialog_date.save(date)"

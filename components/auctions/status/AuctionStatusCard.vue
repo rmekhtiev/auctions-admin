@@ -23,11 +23,11 @@
         </v-list-item-content>
       </v-list-item>
     </v-list>
-    <v-card-actions>
+    <template>
       <draft-status-actions v-if="isDraft" :auction="auction" />
       <pending-status-actions v-if="isPending" :auction="auction" />
       <upcoming-status-actions v-if="isUpcoming" :auction="auction" />
-    </v-card-actions>
+    </template>
   </v-card>
 </template>
 

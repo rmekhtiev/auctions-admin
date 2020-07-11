@@ -14,7 +14,7 @@
       </v-btn>
     </v-card-title>
     <v-list>
-      <v-list-item>
+      <v-list-item two-line>
         <v-list-item-icon>
           <v-icon>
             mdi-domain
@@ -23,7 +23,18 @@
         <v-list-item-content>
           <v-list-item-title>
             {{ counterparty.attributes.display_name }}
+            <v-icon
+              v-if="counterparty.attributes.has_signed_contracts"
+              color="green"
+              small
+              class="mb-1"
+            >
+              mdi-check-circle-outline
+            </v-icon>
           </v-list-item-title>
+          <v-list-item-subtitle>
+            {{ $t(`counterparties.types.${counterparty.attributes._type}`) }}
+          </v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
       <v-list-item two-line>
@@ -32,21 +43,26 @@
         </v-list-item-icon>
         <v-list-item-content>
           <v-list-item-title>
-            {{ counterparty.attributes.inn }}
+            УНП: {{ counterparty.attributes.inn }}
           </v-list-item-title>
           <v-list-item-subtitle>
-            УНП
+            от {{ $moment(counterparty.attributes.egr_date).format('LL') }}
           </v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
-      <v-list-item>
+      <v-list-item two-line>
         <v-list-item-icon>
-          <v-icon>mdi-information-outline</v-icon>
+          <v-icon>
+            mdi-calendar
+          </v-icon>
         </v-list-item-icon>
         <v-list-item-content>
           <v-list-item-title>
-            {{ $t(`counterparties.types.${counterparty.attributes._type}`) }}
+            {{ $moment(counterparty.attributes.created_at).format('ll') }}
           </v-list-item-title>
+          <v-list-item-subtitle>
+            Дата добавления
+          </v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
     </v-list>

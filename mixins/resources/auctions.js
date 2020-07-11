@@ -18,7 +18,7 @@ export default {
         title: 'Внимание',
       })
 
-      if (res === true) {
+      if (res !== false) {
         this.$store.dispatch('auctions/delete', { id })
       }
     },
@@ -31,7 +31,7 @@ export default {
         title: 'Внимание',
       })
 
-      if (res === true) {
+      if (res !== false) {
         auction.attributes.status = newStatus
 
         return this.$store.dispatch('auctions/update', auction)

@@ -7,6 +7,10 @@ export default function ({ $axios, store }) {
     resourceModule({ name: 'users', httpClient: $axios })
   )
   store.registerModule(
+    'accounts',
+    resourceModule({ name: 'accounts', httpClient: $axios })
+  )
+  store.registerModule(
     'counterparties',
     resourceModule({ name: 'counterparties', httpClient: $axios })
   )
@@ -17,6 +21,10 @@ export default function ({ $axios, store }) {
   store.registerModule(
     'lots',
     resourceModule({ name: 'lots', httpClient: $axios })
+  )
+  store.registerModule(
+    'contracts',
+    resourceModule({ name: 'contracts', httpClient: $axios })
   )
 
   store.registerModule('jv', jsonapiModule($axios))
