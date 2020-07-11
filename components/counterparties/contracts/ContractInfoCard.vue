@@ -57,6 +57,7 @@ export default {
         }
         const formData = serialize({ data })
 
+        //! store.dispatch(...) не работает с файлами, поэтомy приходится делать так
         this.$axios
           .post('/contracts', formData)
           .then(async ({ data: result }) => {
@@ -65,12 +66,6 @@ export default {
             await this.$store.commit('contracts/STORE_LAST_CREATED', result.data)
             await this.$emit('created', this.$store.getters['lots/lastCreated'])
           })
-
-        // this.$store
-        //   .dispatch('contracts/create', formData)
-        //   .then(() =>
-        //     this.$emit('created', this.$store.getters['lots/lastCreated'])
-        //   )
       }
     },
   },
