@@ -7,7 +7,7 @@
 
       <v-spacer></v-spacer>
 
-      <v-btn v-if="auction" class="text--black" icon @click="createLot()">
+      <v-btn v-if="auction" icon color="primary" @click="createLot()">
         <v-icon>mdi-plus</v-icon>
       </v-btn>
     </v-card-title>
