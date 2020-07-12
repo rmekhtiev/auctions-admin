@@ -4,6 +4,30 @@
       <v-col sm="12" md="6" lg="4">
         <auction-info-card :auction="auction" class="mb-6" />
 
+        <div v-if="!auction.attributes.display_address">
+          <v-alert
+            type="info"
+            dense
+            border="left"
+            elevation="2"
+            colored-border
+            prominent
+          >
+            <v-row align="center">
+              <v-col class="grow"> У аукциона не указан адрес. </v-col>
+              <v-col class="shrink">
+                <v-btn
+                  class="mt-2 inline"
+                  color="info"
+                  text
+                  @click="addAddress()"
+                  >Добавить</v-btn
+                >
+              </v-col>
+            </v-row>
+          </v-alert>
+        </div>
+
         <lots-list-card
           :lots="lots"
           :auction="auction"
@@ -27,6 +51,7 @@
 
 <script>
 import auctions from '~/mixins/resources/auctions'
+import AddressDialog from '~/components/counterparties/addresses/AddressDialog'
 
 export default {
   mixins: [auctions],
@@ -70,6 +95,23 @@ export default {
     },
   },
 
-  method: {},
+  methods: {
+    async addAddress() {
+      const dialog = await this.$dialog.showAndWait(AddressDialog)
+
+      if (dialog !== false) {
+        const formData = dialog
+        formData.attributes.addressable_id = this.auction.id
+        formData.attributes.addressable_type = 'auctions'
+        formData.attributes.country_code = 'BY'
+
+        this.$store.dispatch('addresses/create', formData).then(() => {
+          this.$store.dispatch('auctions/loadById', {
+            id: this.$route.params.id,
+          })
+        })
+      }
+    },
+  },
 }
 </script>
