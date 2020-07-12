@@ -5,15 +5,8 @@
         <auction-info-card :auction="auction" class="mb-6" />
 
         <div v-if="!auction.attributes.display_address">
-          <v-alert
-            type="info"
-            dense
-            border="left"
-            elevation="2"
-            colored-border
-            prominent
-          >
-            <v-row align="center">
+          <v-alert color="info" border="left" elevation="2" colored-border>
+            <v-row align="center" no-gutters>
               <v-col class="grow"> У аукциона не указан адрес. </v-col>
               <v-col class="shrink">
                 <v-btn

@@ -4,15 +4,8 @@
       <v-col sm="12" md="6" lg="4">
         <counterparty-info-card :counterparty="counterparty" no-link />
         <div v-if="!counterparty.attributes.display_address" class="mt-8">
-          <v-alert
-            type="info"
-            dense
-            border="left"
-            elevation="2"
-            colored-border
-            prominent
-          >
-            <v-row align="center">
+          <v-alert color="info" border="left" elevation="2" colored-border>
+            <v-row align="center" no-gutters>
               <v-col class="grow"> У контрагента не указан адрес. </v-col>
               <v-col class="shrink">
                 <v-btn
