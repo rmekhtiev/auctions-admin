@@ -93,9 +93,17 @@ export default {
       const dialog = await this.$dialog.showAndWait(AddressDialog)
 
       if (dialog !== false) {
-        const formData = dialog
-        formData.attributes.addressable_id = this.auction.id
-        formData.attributes.addressable_type = 'auctions'
+        const formData = {
+          attributes: dialog.attributes,
+          relationships: {
+            addressable: {
+              data: {
+                id: this.$route.params.id,
+                type: 'auctions',
+              },
+            },
+          },
+        }
         formData.attributes.country_code = 'BY'
 
         this.$store.dispatch('addresses/create', formData).then(() => {
