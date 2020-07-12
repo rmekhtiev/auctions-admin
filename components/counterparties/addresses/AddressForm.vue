@@ -1,18 +1,30 @@
 <template>
   <v-form>
-    <v-text-field value="BY" disabled label="Страна" />
-    <v-text-field v-model="value.state" label="Область" :rules="rules.state" />
-    <v-text-field v-model="value.city" label="Город" :rules="rules.city" />
+    <v-text-field value="BY" disabled label="Страна" autocomplete="no" />
+    <v-text-field
+      v-model="value.state"
+      label="Область"
+      :rules="rules.state"
+      autocomplete="no"
+    />
+    <v-text-field
+      v-model="value.city"
+      label="Город"
+      :rules="rules.city"
+      autocomplete="no"
+    />
     <v-text-field
       v-model="value.address"
       label="Адрес"
       :rules="rules.address"
+      autocomplete="no"
     />
     <v-text-field
       v-model="value.postal_code"
       label="Индекс"
       :rules="rules.postal_code"
       counter="6"
+      autocomplete="no"
       @keypress="onlyNumber"
     />
   </v-form>
