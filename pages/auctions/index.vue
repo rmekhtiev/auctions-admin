@@ -1,7 +1,7 @@
 <template>
   <div id="users" class="mb-16">
     <v-row id="filters">
-      <v-col sm="6" md="4">
+      <v-col sm="6" md="3">
         <v-text-field
           v-model="filter.search"
           prepend-inner-icon="mdi-magnify"
@@ -14,7 +14,33 @@
           @keyup.enter="loadItems()"
         />
       </v-col>
-      <v-col sm="6" md="4" lg="3">
+      <v-col sm="6" md="3">
+        <v-text-field
+          v-model="filter.seller"
+          prepend-inner-icon="mdi-magnify"
+          label="Поиск по продавцу"
+          single-line
+          filled
+          clearable
+          autocomplete="off"
+          name="search"
+          @keyup.enter="loadItems()"
+        />
+      </v-col>
+      <v-col sm="6" md="3">
+        <v-text-field
+          v-model="filter.organizer"
+          prepend-inner-icon="mdi-magnify"
+          label="Поиск по организатору"
+          single-line
+          filled
+          clearable
+          autocomplete="off"
+          name="search"
+          @keyup.enter="loadItems()"
+        />
+      </v-col>
+      <v-col sm="6" md="3">
         <v-select
           v-model="filter.status"
           :items="auctionStatuses"
@@ -22,7 +48,6 @@
           label="Статус"
           single-line
           filled
-          multiple
           clearable
           name="status"
           item-value="value"
