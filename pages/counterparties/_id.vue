@@ -7,6 +7,22 @@
           no-link
           class="mb-8"
         />
+        <div v-if="!counterparty.attributes.display_address" class="mt-8">
+          <v-alert color="info" border="left" elevation="2" colored-border>
+            <v-row align="center" no-gutters>
+              <v-col class="grow"> У контрагента не указан адрес. </v-col>
+              <v-col class="shrink">
+                <v-btn
+                  class="mt-2 inline"
+                  color="info"
+                  text
+                  @click="addAddress()"
+                  >Добавить</v-btn
+                >
+              </v-col>
+            </v-row>
+          </v-alert>
+        </div>
         <contract-info-card
           :counterparty="counterparty"
           :contracts="contracts"
@@ -23,6 +39,7 @@
 <script>
 import CounterpartyInfoCard from '../../components/counterparties/CounterpartyInfoCard'
 import CounterpartyLegalCard from '../../components/counterparties/CounterpartyLegalCard'
+import AddressDialog from '~/components/counterparties/addresses/AddressDialog'
 import ContractInfoCard from '~/components/counterparties/contracts/ContractInfoCard'
 
 export default {
@@ -59,6 +76,30 @@ export default {
       return this.$store.dispatch('contracts/loadRelated', {
         parent: this.counterparty,
       })
+    },
+    async addAddress() {
+      const dialog = await this.$dialog.showAndWait(AddressDialog)
+
+      if (dialog !== false) {
+        const formData = {
+          attributes: dialog.attributes,
+          relationships: {
+            addressable: {
+              data: {
+                id: this.$route.params.id,
+                type: 'counterparties',
+              },
+            },
+          },
+        }
+        formData.attributes.country_code = 'BY'
+
+        this.$store.dispatch('addresses/create', formData).then(() => {
+          this.$store.dispatch('counterparties/loadById', {
+            id: this.$route.params.id,
+          })
+        })
+      }
     },
   },
 }

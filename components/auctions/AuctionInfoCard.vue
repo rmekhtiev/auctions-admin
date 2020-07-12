@@ -125,6 +125,19 @@
           </v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
+      <v-list-item v-if="auction.attributes.display_address">
+        <v-list-item-icon>
+          <v-icon>mdi-home</v-icon>
+        </v-list-item-icon>
+        <v-list-item-content>
+          <v-list-item-title>
+            {{ auction.attributes.display_address }}
+          </v-list-item-title>
+          <v-list-item-subtitle>
+            Адрес
+          </v-list-item-subtitle>
+        </v-list-item-content>
+      </v-list-item>
     </v-list>
   </v-card>
 </template>
