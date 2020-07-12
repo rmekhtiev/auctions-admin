@@ -49,6 +49,7 @@
           single-line
           filled
           clearable
+          multiple
           name="status"
           item-value="value"
           item-text="title"
