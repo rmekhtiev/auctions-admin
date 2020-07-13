@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - "NUXT_TELEMETRY_DISABLED=1"
+    env_file: ./.env
+    image: gitlab.devolt.one:5050/d.1/huskymedia/auctions/auctions-frontend
+    restart: unless-stopped
+    tty: true
+    working_dir: /usr/src/nuxt-app
+    ports:
+      - 3000:5000

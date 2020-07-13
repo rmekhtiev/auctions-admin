@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      args:
+        ARG_NODE_ENV: local
+      context: .
+      dockerfile: Dockerfile
+    image: gitlab.devolt.one:5050/d.1/huskymedia/auctions/auctions-frontend
+    restart: unless-stopped
+    tty: true
+    working_dir: /usr/src/nuxt-app
+    ports:
+      - 3000:5000
+    volumes:
+      - /etc/passwd:/etc/passwd:ro
+      - /etc/group:/etc/group:ro
+      - ./:/usr/src/nuxt-app:cached
+      - home:/home/user:cached
+
+volumes:
+  home:
