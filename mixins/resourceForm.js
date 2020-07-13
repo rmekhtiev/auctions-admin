@@ -36,7 +36,7 @@ export default {
       default: () => ({}),
     },
   },
-  mounted() {
+  created() {
     this.fillDefaultValues()
   },
   methods: {
@@ -52,7 +52,7 @@ export default {
           finalized[key] = value
         }
       }
-      Object.assign(this.value, finalized) // ? todo: как поправить?
+      // Object.assign(this.value, finalized)  ? todo: как поправить?
 
       this.$emit('input', finalized)
     },
