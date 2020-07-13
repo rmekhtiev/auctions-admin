@@ -54,6 +54,7 @@ export default {
     // Doc: https://github.com/nuxt-community/stylelint-module
     '@nuxtjs/stylelint-module',
     '@nuxtjs/vuetify',
+    '@nuxtjs/dotenv',
   ],
   /*
    ** Nuxt.js modules
@@ -78,9 +79,15 @@ export default {
    ** See https://axios.nuxtjs.org/options
    */
   axios: {
-    host: 'auctions-backend.test',
-    prefix: '/api/v1/',
+    // host: 'auctions-backend.test',
+    prefix: '/api/v1',
     port: '80',
+
+    proxy: true,
+  },
+
+  proxy: {
+    '/api/': process.env.API_URL || 'http://auctions-backend.test',
   },
 
   auth: {
