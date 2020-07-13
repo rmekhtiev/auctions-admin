@@ -132,7 +132,7 @@ export default {
   },
 
   router: {
-    middleware: ['auth'],
+    middleware: ['auth', 'role'],
   },
 
   moment: {
