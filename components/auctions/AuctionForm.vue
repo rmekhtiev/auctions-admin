@@ -142,6 +142,19 @@ export default {
       this.recalculateDatetimes()
     },
   },
+  created() {
+    console.log(this.value)
+    this.date = this.value.starts_at
+      ? this.$moment(this.value.starts_at).format('YYYY-MM-DD')
+      : null
+    this.starts_at = this.value.starts_at
+      ? this.$moment(this.value.starts_at).format('HH:mm')
+      : '10:00'
+    this.ends_at = this.value.ends_at
+      ? this.$moment(this.value.ends_at).format('HH:mm')
+      : '18:00'
+    this.recalculateDatetimes()
+  },
   methods: {
     recalculateDatetimes() {
       const startsAt = this.$moment(this.date + ' ' + this.starts_at).clone()
