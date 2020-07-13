@@ -19,7 +19,9 @@ export default {
       })
 
       if (res !== false) {
-        this.$store.dispatch('auctions/delete', { id })
+        this.$store.dispatch('auctions/delete', { id }).then(() => {
+          this.$router.push({ name: 'auctions' })
+        })
       }
     },
 
