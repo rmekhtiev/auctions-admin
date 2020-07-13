@@ -41,13 +41,13 @@
       ></v-date-picker>
     </v-menu>
     <v-text-field
-      v-model="value.name.full_name"
+      v-model="full_name"
       label="Полное название организации"
       placeholder="Введите полное название организации"
       :rules="rules.full_name"
     />
     <v-text-field
-      v-model="value.name.short_name"
+      v-model="short_name"
       label="Краткое название организации"
       placeholder="Введите краткое название организации"
       :rules="rules.short_name"
@@ -92,6 +92,16 @@ export default {
       Object.assign(this.name, { short_name: val })
       Object.assign(this.value, { name: this.name })
     },
+  },
+  created() {
+    // eslint-disable-next-line no-prototype-builtins
+    this.full_name = this.final.hasOwnProperty('name')
+      ? this.final.name.full_name
+      : ''
+    // eslint-disable-next-line no-prototype-builtins
+    this.short_name = this.final.hasOwnProperty('name')
+      ? this.final.name.short_name
+      : ''
   },
 }
 </script>
