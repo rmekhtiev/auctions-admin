@@ -44,7 +44,6 @@
             :options.sync="iteratorOptions"
             :server-items-length="totalItems"
             :loading="itemsLoading"
-            multi-sort
             @click:row="(_e, { item }) => openUserPage(item)"
           >
             <template v-slot:item.attributes.role="{ item }">
@@ -74,7 +73,8 @@ export default {
   data: () => ({
     headers: [
       { text: 'Логин', value: 'attributes.login' },
-      { text: 'Роль', sortable: false, value: 'attributes.role' },
+      { text: 'Email', value: 'attributes.email' },
+      { text: 'Роль', value: 'attributes.role' },
     ],
   }),
   methods: {

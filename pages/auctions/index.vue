@@ -69,7 +69,6 @@
             :options.sync="iteratorOptions"
             :server-items-length="totalItems"
             :loading="itemsLoading"
-            multi-sort
             @click:row="(_e, { item }) => openAuctionPage(item)"
           >
             <template v-slot:item.attributes.starts_at="{ item }">
@@ -121,7 +120,11 @@ export default {
       { text: '№', value: 'id' },
       { text: 'Название', value: 'attributes.title' },
       { text: 'Начало торгов', value: 'attributes.starts_at' },
-      { text: 'Начальная цена', value: 'attributes.price_start' },
+      {
+        text: 'Начальная цена',
+        sortable: false,
+        value: 'attributes.price_start',
+      },
       { text: 'Продавец', value: 'relationships.seller.data.id' },
       { text: 'Организатор', value: 'relationships.organizer.data.id' },
       { text: 'Статус', value: 'attributes.status' },

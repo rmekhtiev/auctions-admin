@@ -28,7 +28,6 @@
             :options.sync="iteratorOptions"
             :server-items-length="totalItems"
             :loading="itemsLoading"
-            multi-sort
             @click:row="(_e, { item }) => openCounterpartyPage(item)"
           >
             <template v-slot:item.attributes._type="{ item }">
@@ -62,7 +61,7 @@ export default {
   mixins: [serverSidePaginated({ resource: 'counterparties' }), counterparties],
   data: () => ({
     headers: [
-      { text: 'Название', sortable: false, value: 'attributes.display_name' },
+      { text: 'Название', value: 'attributes.display_name' },
       { text: 'Тип', value: 'attributes._type' },
     ],
   }),
