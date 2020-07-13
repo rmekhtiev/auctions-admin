@@ -46,8 +46,8 @@ const createMixin = (resource, includes, _watchSelection = false) => {
       return {
         filter: this.pureFilter,
         options: {
-          page: this.iteratorOptions.page,
-          per_page: this.iteratorOptions.itemsPerPage,
+          'page[number]': this.iteratorOptions.page,
+          'page[limit]': this.iteratorOptions.itemsPerPage,
           sort: this.sortString,
           include: includes,
         },

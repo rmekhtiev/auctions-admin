@@ -35,7 +35,12 @@ export default {
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
    */
-  plugins: ['~/plugins/vue-i18n', '~/plugins/reststate-vuex'],
+  plugins: [
+    '~/plugins/vue-i18n',
+    '~/plugins/reststate-vuex',
+    '~/plugins/axios',
+    { src: '~/plugins/vue-currency-filter', ssr: false },
+  ],
   /*
    ** Auto import components
    ** See https://nuxtjs.org/api/configuration-components
@@ -49,6 +54,7 @@ export default {
     // Doc: https://github.com/nuxt-community/stylelint-module
     '@nuxtjs/stylelint-module',
     '@nuxtjs/vuetify',
+    '@nuxtjs/dotenv',
   ],
   /*
    ** Nuxt.js modules
@@ -58,15 +64,30 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
     '@nuxtjs/auth',
+    'vuetify-dialog/nuxt',
+    '@nuxtjs/moment',
+    '@nuxtjs/toast',
   ],
+
+  toast: {
+    position: 'top-right',
+    duration: 3000,
+  },
+
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
    */
   axios: {
-    host: 'auctions-backend.test',
-    prefix: '/api/',
+    // host: 'auctions-backend.test',
+    prefix: '/api/v1',
     port: '80',
+
+    proxy: true,
+  },
+
+  proxy: {
+    '/api/': process.env.API_URL || 'http://auctions-backend.test',
   },
 
   auth: {
@@ -112,6 +133,11 @@ export default {
 
   router: {
     middleware: ['auth'],
+  },
+
+  moment: {
+    locales: ['ru'],
+    defaultTimezone: 'Europe/Minsk',
   },
 
   /*

@@ -47,8 +47,20 @@ export default {
             name: 'index',
           },
         },
+        auctions: {
+          icon: 'mdi-gavel',
+          to: {
+            name: 'auctions',
+          },
+        },
       },
       managementItems: {
+        counterparties: {
+          icon: 'mdi-account-tie',
+          to: {
+            name: 'counterparties',
+          },
+        },
         users: {
           icon: 'mdi-account-multiple-outline',
           to: {

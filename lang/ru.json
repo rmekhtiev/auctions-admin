@@ -1,0 +1,55 @@
+{
+  "roles": {
+    "ADMIN": "Администратор",
+    "MODERATOR": "Модератор",
+    "BANKRUPTCY_MANGER": "Антикризисный",
+    "USER": "Пользователь"
+  },
+  "menu": {
+    "defaultItems": {
+      "items": {
+        "home": "Главная",
+        "auctions": "Аукционы"
+      }
+    },
+    "managementItems": {
+      "title": "Управление",
+      "items": {
+        "users": "Пользователи",
+        "counterparties": "Контрагенты"
+      }
+    }
+  },
+  "counterparties": {
+    "types": {
+      "UL": "Юридическое лицо"
+    }
+  },
+  "auctions": {
+    "statuses": {
+      "DRAFT": {
+        "self": "Черновик",
+        "back": "На доработку"
+      },
+      "PENDING": {
+        "self": "Модерация",
+        "to": "На модерацию"
+      },
+      "UPCOMING": {
+        "self": "Предстоящие торги",
+        "to": "Опубликовать"
+      }
+    }
+  },
+  "lots": {
+    "statuses": {
+      "DRAFT": "Черновик"
+    }
+  },
+  "contracts": {
+    "types": {
+      "NORMAL_BIDDING": "Обычные торги",
+      "BANKRUPTCY_BIDDING": "Антикрисные торги"
+    }
+  }
+}

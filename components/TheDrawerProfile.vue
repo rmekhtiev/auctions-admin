@@ -9,9 +9,10 @@
       </v-avatar>
     </v-list-item-avatar>
     <v-list-item-content>
-      <v-list-item-title class="title">
-        {{ $auth.user.attributes.name }}
-      </v-list-item-title>
+      <v-list-item-title
+        class="title"
+        v-text="`@${$auth.user.attributes.login}`"
+      />
       <v-list-item-subtitle>
         subtext
       </v-list-item-subtitle>
