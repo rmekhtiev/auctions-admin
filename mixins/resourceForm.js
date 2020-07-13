@@ -52,6 +52,7 @@ export default {
           finalized[key] = value
         }
       }
+      Object.assign(this.value, finalized) // ? todo: как поправить?
 
       this.$emit('input', finalized)
     },

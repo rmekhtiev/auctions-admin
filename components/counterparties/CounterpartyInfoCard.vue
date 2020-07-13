@@ -5,6 +5,9 @@
         {{ heading }}
       </div>
       <v-spacer />
+      <v-btn icon @click="updateCounterparty()">
+        <v-icon>mdi-pencil</v-icon>
+      </v-btn>
       <v-btn
         v-if="!noLink"
         icon
@@ -80,6 +83,8 @@
 </template>
 
 <script>
+import CounterpartyDialog from '~/components/counterparties/CounterpartyDialog'
+
 export default {
   name: 'CounterpartyInfoCard',
   props: {
@@ -94,6 +99,26 @@ export default {
     noLink: {
       type: Boolean,
       default: false,
+    },
+  },
+  methods: {
+    async updateCounterparty() {
+      const dialog = await this.$dialog.showAndWait(CounterpartyDialog, {
+        final: this.counterparty,
+      })
+
+      if (dialog !== false) {
+        const formData = {
+          attributes: dialog.attributes,
+          id: this.counterparty.id,
+          type: 'counterparties',
+        }
+        this.$store.dispatch('counterparties/update', formData).then(() => {
+          this.$store.dispatch('counterparties/loadById', {
+            id: this.$route.params.id,
+          })
+        })
+      }
     },
   },
 }

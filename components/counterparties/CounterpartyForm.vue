@@ -41,13 +41,13 @@
       ></v-date-picker>
     </v-menu>
     <v-text-field
-      v-model="full_name"
+      v-model="value.name.full_name"
       label="Полное название организации"
       placeholder="Введите полное название организации"
       :rules="rules.full_name"
     />
     <v-text-field
-      v-model="short_name"
+      v-model="value.name.short_name"
       label="Краткое название организации"
       placeholder="Введите краткое название организации"
       :rules="rules.short_name"
