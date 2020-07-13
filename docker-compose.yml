@@ -7,7 +7,7 @@ services:
         ARG_NODE_ENV: local
       context: .
       dockerfile: Dockerfile
-    image: gitlab.devolt.one:5050/d.1/huskymedia/auctions/auctions-frontend
+    image: gitlab.devolt.one:5050/d.1/huskymedia/auctions/auctions-admin
     restart: unless-stopped
     tty: true
     working_dir: /usr/src/nuxt-app

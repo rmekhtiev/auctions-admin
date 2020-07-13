@@ -1210,6 +1210,14 @@
     consola "^2.11.3"
     defu "^2.0.2"
 
+"@nuxtjs/dotenv@^1.4.1":
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/@nuxtjs/dotenv/-/dotenv-1.4.1.tgz#dd5abb98e22cc7ae27139d3aa606151034293128"
+  integrity sha512-DpdObsvRwC8d89I9mzz6pBg6e/PEXHazDM57DOI1mmML2ZjHfQ/DvkjlSzUL7T+TnW3b/a4Ks5wQx08DqFBmeQ==
+  dependencies:
+    consola "^2.10.1"
+    dotenv "^8.1.0"
+
 "@nuxtjs/eslint-config-typescript@^2.0.0":
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@nuxtjs/eslint-config-typescript/-/eslint-config-typescript-2.0.0.tgz#5710a96eec648091b36432f313a200467d1daa7e"
@@ -3673,7 +3681,7 @@ dot-prop@^5.2.0:
   dependencies:
     is-obj "^2.0.0"
 
-dotenv@^8.2.0:
+dotenv@^8.1.0, dotenv@^8.2.0:
   version "8.2.0"
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-8.2.0.tgz#97e619259ada750eea3e4ea3e26bceea5424b16a"
   integrity sha512-8sJ78ElpbDJBHNeBzUbUVLsqKdccaa/BXF1uPTw3GrvQTBgrQrtObr2mUrE38vzYd8cEv+m/JBfDLioYcfXoaw==
@@ -4712,9 +4720,9 @@ gitlab-ci-license-checker-parser@^1.0.3:
   dependencies:
     commander "^2.18.0"
 
-gitlab-ci-yarn-audit-parser@leon0399/gitlab-ci-yarn-audit-parser:
+"gitlab-ci-yarn-audit-parser@https://github.com/leon0399/gitlab-ci-yarn-audit-parser":
   version "1.0.3"
-  resolved "https://codeload.github.com/leon0399/gitlab-ci-yarn-audit-parser/tar.gz/a55e43b2799645b98036161935a6910e6d66dc47"
+  resolved "https://github.com/leon0399/gitlab-ci-yarn-audit-parser#a55e43b2799645b98036161935a6910e6d66dc47"
   dependencies:
     commander "^2.18.0"
 
