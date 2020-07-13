@@ -143,7 +143,6 @@ export default {
     },
   },
   created() {
-    console.log(this.value)
     this.date = this.final.starts_at
       ? this.$moment(this.final.starts_at).format('YYYY-MM-DD')
       : null
