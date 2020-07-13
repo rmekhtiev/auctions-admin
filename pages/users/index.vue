@@ -16,7 +16,7 @@
       </v-col>
       <v-col sm="6" md="4" lg="3">
         <v-select
-          v-model="filter.roles"
+          v-model="filter.role"
           :items="userRoles"
           prepend-inner-icon="mdi-account-supervisor"
           label="Роли"
