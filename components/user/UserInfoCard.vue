@@ -1,10 +1,14 @@
 <template>
   <v-card>
-    <v-card-text>
+    <v-card-title>
       <div class="overline">
         Пользователь
       </div>
-    </v-card-text>
+      <v-spacer />
+      <v-btn icon @click="updateUser()">
+        <v-icon>mdi-pencil</v-icon>
+      </v-btn>
+    </v-card-title>
     <v-list>
       <v-list-item two-line>
         <v-list-item-avatar>
@@ -59,12 +63,34 @@
 </template>
 
 <script>
+import UserDialog from '~/components/user/UserDialog'
+
 export default {
   name: 'UserInfoCard',
   props: {
     user: {
       type: Object,
       required: true,
+    },
+  },
+  methods: {
+    async updateUser() {
+      const dialog = await this.$dialog.showAndWait(UserDialog, {
+        final: this.user,
+      })
+
+      if (dialog !== false) {
+        const formData = {
+          attributes: dialog.attributes,
+          id: this.user.id,
+          type: 'users',
+        }
+        this.$store.dispatch('users/update', formData).then(() => {
+          this.$store.dispatch('users/loadById', {
+            id: this.$route.params.id,
+          })
+        })
+      }
     },
   },
 }

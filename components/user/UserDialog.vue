@@ -4,7 +4,10 @@
     :actions="actions"
     :handle="handleClick"
   >
-    <user-form v-model="editedValue.attributes"></user-form>
+    <user-form
+      v-model="editedValue.attributes"
+      :final="final.attributes"
+    ></user-form>
   </dialog-card>
 </template>
 

@@ -21,6 +21,18 @@
       prepend-icon="mdi-account-box-outline"
       label="Роль"
       required
+      :disabled="final.role === 'MODERATOR'"
+    >
+      <template v-slot:item="{ item }">{{ item }}</template>
+    </v-select>
+    <v-select
+      ref="role"
+      v-model="value.role"
+      :items="roles"
+      prepend-icon="mdi-account-box-outline"
+      label="Роль"
+      required
+      :disabled="final.role === 'MODERATOR'"
     >
       <template v-slot:item="{ item }">{{ item }}</template>
     </v-select>
@@ -40,6 +52,7 @@ export default {
     setTimeout(() => {
       this.$refs.login.focus()
     }, 100)
+    console.log(this.$auth)
   },
 }
 </script>
