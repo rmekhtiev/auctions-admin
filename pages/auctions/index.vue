@@ -70,6 +70,9 @@
             <v-text-field
               v-model="filter.start"
               label="Дата начала"
+              single-line
+              filled
+              clearable
               readonly
               prepend-inner-icon="mdi-calendar-check"
               v-bind="attrs"
@@ -98,6 +101,9 @@
               v-model="filter.end"
               label="Дата окончания"
               prepend-inner-icon="mdi-calendar-check"
+              single-line
+              filled
+              clearable
               readonly
               v-bind="attrs"
               v-on="on"
