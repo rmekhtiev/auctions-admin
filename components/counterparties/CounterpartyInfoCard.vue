@@ -114,11 +114,7 @@ export default {
           id: this.counterparty.id,
           type: 'counterparties',
         }
-        this.$store.dispatch('counterparties/update', formData).then(() => {
-          this.$store.dispatch('counterparties/loadById', {
-            id: this.$route.params.id,
-          })
-        })
+        this.$store.dispatch('counterparties/update', formData)
       }
     },
   },

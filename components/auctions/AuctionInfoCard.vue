@@ -199,11 +199,7 @@ export default {
           id: this.auction.id,
           type: 'auctions',
         }
-        this.$store.dispatch('auctions/update', formData).then(() => {
-          this.$store.dispatch('auctions/loadById', {
-            id: this.$route.params.id,
-          })
-        })
+        this.$store.dispatch('auctions/update', formData)
       }
     },
   },
