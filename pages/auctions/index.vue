@@ -14,33 +14,33 @@
           @keyup.enter="loadItems()"
         />
       </v-col>
-      <v-col sm="6" md="3">
-        <v-text-field
-          v-model="filter.seller"
-          prepend-inner-icon="mdi-magnify"
-          label="Поиск по продавцу"
-          single-line
-          filled
-          clearable
-          autocomplete="off"
-          name="search"
-          @keyup.enter="loadItems()"
-        />
-      </v-col>
-      <v-col sm="6" md="3">
-        <v-text-field
-          v-model="filter.organizer"
-          prepend-inner-icon="mdi-magnify"
-          label="Поиск по организатору"
-          single-line
-          filled
-          clearable
-          autocomplete="off"
-          name="search"
-          @keyup.enter="loadItems()"
-        />
-      </v-col>
-      <v-col sm="6" md="3">
+      <!--      <v-col sm="6" md="3">-->
+      <!--        <v-text-field-->
+      <!--          v-model="filter.seller"-->
+      <!--          prepend-inner-icon="mdi-magnify"-->
+      <!--          label="Поиск по продавцу"-->
+      <!--          single-line-->
+      <!--          filled-->
+      <!--          clearable-->
+      <!--          autocomplete="off"-->
+      <!--          name="search"-->
+      <!--          @keyup.enter="loadItems()"-->
+      <!--        />-->
+      <!--      </v-col>-->
+      <!--      <v-col sm="6" md="3">-->
+      <!--        <v-text-field-->
+      <!--          v-model="filter.organizer"-->
+      <!--          prepend-inner-icon="mdi-magnify"-->
+      <!--          label="Поиск по организатору"-->
+      <!--          single-line-->
+      <!--          filled-->
+      <!--          clearable-->
+      <!--          autocomplete="off"-->
+      <!--          name="search"-->
+      <!--          @keyup.enter="loadItems()"-->
+      <!--        />-->
+      <!--      </v-col>-->
+      <v-col sm="6" md="2">
         <v-select
           v-model="filter.status"
           :items="auctionStatuses"
@@ -56,7 +56,63 @@
           @input="loadItems()"
         />
       </v-col>
+
+      <v-col sm="6" md="2">
+        <v-menu
+          ref="menu"
+          v-model="menu"
+          :close-on-content-click="false"
+          transition="scale-transition"
+          offset-y
+          min-width="290px"
+        >
+          <template v-slot:activator="{ on, attrs }">
+            <v-text-field
+              v-model="filter.start"
+              label="Дата начала"
+              readonly
+              prepend-inner-icon="mdi-calendar-check"
+              v-bind="attrs"
+              v-on="on"
+            ></v-text-field>
+          </template>
+          <v-date-picker v-model="filter.start" no-title scrollable>
+            <v-spacer></v-spacer>
+            <v-btn text color="primary" @click="menu = false">Cancel</v-btn>
+            <v-btn text color="primary" @click="loadStart()">OK</v-btn>
+          </v-date-picker>
+        </v-menu>
+      </v-col>
+      <v-col sm="6" md="2">
+        <v-menu
+          ref="menu"
+          v-model="menu2"
+          prepend-inner-icon="mdi-account-supervisor"
+          :close-on-content-click="false"
+          transition="scale-transition"
+          offset-y
+          min-width="290px"
+        >
+          <template v-slot:activator="{ on, attrs }">
+            <v-text-field
+              v-model="filter.end"
+              label="Дата окончания"
+              prepend-inner-icon="mdi-calendar-check"
+              readonly
+              v-bind="attrs"
+              v-on="on"
+            ></v-text-field>
+          </template>
+
+          <v-date-picker v-model="filter.end" no-title scrollable>
+            <v-spacer></v-spacer>
+            <v-btn text color="primary" @click="menu2 = false">Cancel</v-btn>
+            <v-btn text color="primary" @click="loadEnd()">OK</v-btn>
+          </v-date-picker>
+        </v-menu>
+      </v-col>
     </v-row>
+
     <v-row>
       <v-col>
         <v-card>
@@ -73,8 +129,15 @@
           >
             <template v-slot:item.attributes.starts_at="{ item }">
               {{ $moment(item.attributes.starts_at).format('LL') }},
-              {{ $moment(item.attributes.starts_at).format('LT') }} -
+              {{ $moment(item.attributes.starts_at).format('LT') }}
+            </template>
+            <template v-slot:item.attributes.ends_at="{ item }">
+              {{ $moment(item.attributes.ends_at).format('LL') }},
               {{ $moment(item.attributes.ends_at).format('LT') }}
+            </template>
+            <template v-slot:item.attributes.created_at="{ item }">
+              {{ $moment(item.attributes.сreated_at).format('LL') }},
+              {{ $moment(item.attributes.created_at).format('LT') }}
             </template>
             <template v-slot:item.attributes.price_start="{ item }">
               {{ item.attributes.price_start | currency }}
@@ -116,10 +179,14 @@ export default {
   name: 'Index',
   mixins: [serverSidePaginated({ resource: 'auctions' }), users, auctions],
   data: () => ({
+    menu: false,
+    menu2: false,
     headers: [
       { text: '№', value: 'id' },
       { text: 'Название', value: 'attributes.title' },
       { text: 'Начало торгов', value: 'attributes.starts_at' },
+      { text: 'Окончание торгов', value: 'attributes.ends_at' },
+      { text: 'Дата создания', value: 'attributes.created_at' },
       {
         text: 'Начальная цена',
         sortable: false,
@@ -131,6 +198,15 @@ export default {
     ],
   }),
   methods: {
+    loadStart() {
+      this.menu = false
+      this.loadItems()
+    },
+    loadEnd() {
+      this.menu2 = false
+      this.loadItems()
+    },
+
     async createAuction(openPage = true) {
       const dialog = await this.$dialog.showAndWait(AuctionDialog)
 
