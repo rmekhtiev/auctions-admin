@@ -87,7 +87,9 @@ export default {
   }),
   methods: {
     async createAuction(openPage = true) {
-      const dialog = await this.$dialog.showAndWait(AuctionDialog)
+      const dialog = await this.$dialog.showAndWait(AuctionDialog, {
+        persistent: true,
+      })
 
       if (dialog !== false) {
         const formData = {

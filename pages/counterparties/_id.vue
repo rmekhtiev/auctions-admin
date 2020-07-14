@@ -78,7 +78,9 @@ export default {
       })
     },
     async addAddress() {
-      const dialog = await this.$dialog.showAndWait(AddressDialog)
+      const dialog = await this.$dialog.showAndWait(AddressDialog, {
+        persistent: true,
+      })
 
       if (dialog !== false) {
         const formData = {

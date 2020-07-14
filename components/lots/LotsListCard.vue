@@ -54,7 +54,9 @@ export default {
 
   methods: {
     async createLot() {
-      const dialog = await this.$dialog.showAndWait(LotDialog)
+      const dialog = await this.$dialog.showAndWait(LotDialog, {
+        persistent: true,
+      })
 
       if (dialog !== false) {
         const formData = {

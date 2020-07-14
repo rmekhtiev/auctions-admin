@@ -79,7 +79,9 @@ export default {
   }),
   methods: {
     async createUser(openPage = true) {
-      const dialog = await this.$dialog.showAndWait(UserDialog)
+      const dialog = await this.$dialog.showAndWait(UserDialog, {
+        persistent: true,
+      })
 
       if (dialog !== false) {
         this.$store.dispatch('users/create', dialog).then(() => {

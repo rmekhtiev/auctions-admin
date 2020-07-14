@@ -176,6 +176,7 @@ export default {
       final.attributes.organizer_id = this.auction.relationships.organizer.data.id
       const dialog = await this.$dialog.showAndWait(AuctionDialog, {
         final,
+        persistent: true,
       })
 
       if (dialog !== false) {

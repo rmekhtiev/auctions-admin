@@ -79,7 +79,9 @@ export default {
   }),
   methods: {
     async createCounterparty(openPage = true) {
-      const dialog = await this.$dialog.showAndWait(CounterpartyDialog)
+      const dialog = await this.$dialog.showAndWait(CounterpartyDialog, {
+        persistent: true,
+      })
 
       if (dialog !== false) {
         this.$store.dispatch('counterparties/create', dialog).then(() => {

@@ -105,6 +105,7 @@ export default {
     async updateCounterparty() {
       const dialog = await this.$dialog.showAndWait(CounterpartyDialog, {
         final: this.counterparty,
+        persistent: true,
       })
 
       if (dialog !== false) {

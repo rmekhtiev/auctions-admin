@@ -77,6 +77,7 @@ export default {
     async updateUser() {
       const dialog = await this.$dialog.showAndWait(UserDialog, {
         final: this.user,
+        persistent: true,
       })
 
       if (dialog !== false) {
