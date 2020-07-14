@@ -85,10 +85,9 @@ export default {
       })
 
       if (dialog !== false) {
-        this.$store.dispatch('users/create', dialog).then(() => {
-          const user = this.$store.getters['users/lastCreated']
-          return openPage && this.openUserPage(user)
-        })
+        await this.$store.dispatch('users/create', dialog)
+        const user = this.$store.getters['users/lastCreated']
+        return openPage && this.openUserPage(user)
       }
     },
   },

@@ -84,10 +84,9 @@ export default {
       })
 
       if (dialog !== false) {
-        this.$store.dispatch('counterparties/create', dialog).then(() => {
-          const counterparty = this.$store.getters['counterparties/lastCreated']
-          return openPage && this.openCounterpartyPage(counterparty)
-        })
+        await this.$store.dispatch('counterparties/create', dialog)
+        const counterparty = this.$store.getters['counterparties/lastCreated']
+        return openPage && this.openCounterpartyPage(counterparty)
       }
     },
   },

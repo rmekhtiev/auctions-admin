@@ -109,10 +109,9 @@ export default {
             },
           },
         }
-        this.$store.dispatch('auctions/create', formData).then(() => {
-          const auction = this.$store.getters['auctions/lastCreated']
-          return openPage && this.openAuctionPage(auction)
-        })
+        await this.$store.dispatch('auctions/create', formData)
+        const auction = this.$store.getters['auctions/lastCreated']
+        return openPage && this.openAuctionPage(auction)
       }
     },
   },

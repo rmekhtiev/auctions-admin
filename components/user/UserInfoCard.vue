@@ -87,7 +87,10 @@ export default {
           id: this.user.id,
           type: 'users',
         }
-        this.$store.dispatch('users/update', formData)
+        await this.$store.dispatch('users/update', formData)
+        this.$store.dispatch('users/loadById', {
+          id: this.$route.params.id,
+        })
       }
     },
   },

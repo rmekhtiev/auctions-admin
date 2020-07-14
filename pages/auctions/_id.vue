@@ -108,10 +108,9 @@ export default {
         }
         formData.attributes.country_code = 'BY'
 
-        this.$store.dispatch('addresses/create', formData).then(() => {
-          this.$store.dispatch('auctions/loadById', {
-            id: this.$route.params.id,
-          })
+        await this.$store.dispatch('addresses/create', formData)
+        this.$store.dispatch('auctions/loadById', {
+          id: this.$route.params.id,
         })
       }
     },
