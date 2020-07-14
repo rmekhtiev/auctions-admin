@@ -49,6 +49,10 @@
             <template v-slot:item.attributes.role="{ item }">
               {{ $t(`roles.${item.attributes.role}`) }}
             </template>
+            <template v-slot:item.attributes.created_at="{ item }">
+              {{ $moment(item.attributes.starts_at).format('LL') }},
+              {{ $moment(item.attributes.starts_at).format('LT') }}
+            </template>
           </v-data-table>
         </v-card>
       </v-col>
@@ -74,6 +78,7 @@ export default {
     headers: [
       { text: 'Логин', value: 'attributes.login' },
       { text: 'Email', value: 'attributes.email' },
+      { text: 'Дата регистрации', value: 'attributes.created_at' },
       { text: 'Роль', value: 'attributes.role' },
     ],
   }),
