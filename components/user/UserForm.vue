@@ -44,23 +44,27 @@ export default {
     },
   },
   data: () => ({
-    roles: [
-      { value: 'ADMIN', name: 'Администратор', disabled: false },
-      { value: 'MODERATOR', name: 'Модератор', disabled: false },
-      { value: 'USER', name: 'Пользователь', disabled: false },
-      { value: 'BANKRUPTCY_MANGER', name: 'Антикризисный', disabled: false },
+    role: [
+      { value: 'ADMIN', name: 'Администратор' },
+      { value: 'MODERATOR', name: 'Модератор' },
+      { value: 'USER', name: 'Пользователь' },
+      { value: 'BANKRUPTCY_MANGER', name: 'Антикризисный' },
     ],
   }),
+  computed: {
+    roles() {
+      this.role.map((item) => {
+        item.disabled =
+          this.authUser.attributes.role !== 'ADMIN' &&
+          (item.value === 'ADMIN' || item.value === 'MODERATOR')
+      })
+      return this.role
+    },
+  },
   mounted() {
     setTimeout(() => {
       this.$refs.login.focus()
     }, 100)
-    this.roles.map((item) => {
-      this.authUser.attributes.role === 'MODERATOR' &&
-      (item.value === 'ADMIN' || item.value === 'MODERATOR')
-        ? (item.disabled = true)
-        : (item.disabled = false)
-    })
   },
 }
 </script>
