@@ -77,6 +77,7 @@ export default {
     async updateUser() {
       const dialog = await this.$dialog.showAndWait(UserDialog, {
         final: this.user,
+        authUser: this.$auth.user, // Так как в диалоге нельзя вызвать $auth, передаем prop todo
         persistent: true,
       })
 
