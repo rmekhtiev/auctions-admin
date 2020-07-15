@@ -19,7 +19,7 @@ export default {
   data() {
     return {
       drawer: true,
-      title: 'Реал торги',
+      title: 'Реалторги',
     }
   },
 }
