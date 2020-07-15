@@ -14,7 +14,7 @@
         v-text="`@${$auth.user.attributes.login}`"
       />
       <v-list-item-subtitle>
-        subtext
+        {{ $t('roles.' + $auth.user.attributes.role) }}
       </v-list-item-subtitle>
     </v-list-item-content>
     <v-list-item-action>

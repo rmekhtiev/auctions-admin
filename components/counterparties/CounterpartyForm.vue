@@ -5,6 +5,8 @@
       label="Тип"
       placeholder="Введите тип"
       :items="types"
+      item-text="name"
+      item-value="value"
       :rules="rules.type"
     >
     </v-select>
@@ -79,7 +81,7 @@ export default {
     full_name: '',
     short_name: '',
     name: {},
-    types: ['UL'],
+    types: [{ value: 'UL', name: 'Юридическое лицо' }],
   }),
   watch: {
     full_name(val) {
