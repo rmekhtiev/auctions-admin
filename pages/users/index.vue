@@ -16,7 +16,7 @@
       </v-col>
       <v-col sm="6" md="4" lg="3">
         <v-select
-          v-model="filter.roles"
+          v-model="filter.role"
           :items="userRoles"
           prepend-inner-icon="mdi-account-supervisor"
           label="Роли"
@@ -44,11 +44,14 @@
             :options.sync="iteratorOptions"
             :server-items-length="totalItems"
             :loading="itemsLoading"
-            multi-sort
             @click:row="(_e, { item }) => openUserPage(item)"
           >
             <template v-slot:item.attributes.role="{ item }">
               {{ $t(`roles.${item.attributes.role}`) }}
+            </template>
+            <template v-slot:item.attributes.created_at="{ item }">
+              {{ $moment(item.attributes.starts_at).format('LL') }},
+              {{ $moment(item.attributes.starts_at).format('LT') }}
             </template>
           </v-data-table>
         </v-card>
@@ -74,7 +77,9 @@ export default {
   data: () => ({
     headers: [
       { text: 'Логин', value: 'attributes.login' },
-      { text: 'Роль', sortable: false, value: 'attributes.role' },
+      { text: 'Email', value: 'attributes.email' },
+      { text: 'Дата регистрации', value: 'attributes.created_at' },
+      { text: 'Роль', value: 'attributes.role' },
     ],
   }),
   methods: {
