@@ -14,32 +14,6 @@
           @keyup.enter="loadItems()"
         />
       </v-col>
-      <!--      <v-col sm="6" md="3">-->
-      <!--        <v-text-field-->
-      <!--          v-model="filter.seller"-->
-      <!--          prepend-inner-icon="mdi-magnify"-->
-      <!--          label="Поиск по продавцу"-->
-      <!--          single-line-->
-      <!--          filled-->
-      <!--          clearable-->
-      <!--          autocomplete="off"-->
-      <!--          name="search"-->
-      <!--          @keyup.enter="loadItems()"-->
-      <!--        />-->
-      <!--      </v-col>-->
-      <!--      <v-col sm="6" md="3">-->
-      <!--        <v-text-field-->
-      <!--          v-model="filter.organizer"-->
-      <!--          prepend-inner-icon="mdi-magnify"-->
-      <!--          label="Поиск по организатору"-->
-      <!--          single-line-->
-      <!--          filled-->
-      <!--          clearable-->
-      <!--          autocomplete="off"-->
-      <!--          name="search"-->
-      <!--          @keyup.enter="loadItems()"-->
-      <!--        />-->
-      <!--      </v-col>-->
       <v-col sm="6" md="2">
         <v-select
           v-model="filter.status"
@@ -141,13 +115,7 @@
               {{ $moment(item.attributes.ends_at).format('LL') }},
               {{ $moment(item.attributes.ends_at).format('LT') }}
             </template>
-            <template v-slot:item.attributes.created_at="{ item }">
-              {{ $moment(item.attributes.сreated_at).format('LL') }},
-              {{ $moment(item.attributes.created_at).format('LT') }}
-            </template>
-            <template v-slot:item.attributes.price_start="{ item }">
-              {{ item.attributes.price_start | currency }}
-            </template>
+
             <template v-slot:item.relationships.organizer.data.id="{ item }">
               {{
                 $store.getters['counterparties/byId']({
@@ -162,8 +130,22 @@
                 }).attributes.display_name
               }}
             </template>
-            <template v-slot:item.attributes.status="{ item }">
-              {{ $t(`auctions.statuses.${item.attributes.status}.self`) }}
+
+            <template v-slot:item.attributes.created_at="{ item }">
+              <v-tooltip bottom>
+                <template v-slot:activator="{ on, attrs }">
+                  <span v-bind="attrs" class="grey--text" v-on="on">
+                    {{ $moment(item.attributes.created_at).fromNow() }}</span
+                  >
+                </template>
+                <span>{{
+                  $moment(item.attributes.created_at).format('LLL')
+                }}</span>
+              </v-tooltip>
+            </template>
+
+            <template v-slot:item.attributes.price_start="{ item }">
+              {{ item.attributes.price_start | currency }}
             </template>
           </v-data-table>
         </v-card>
@@ -192,15 +174,17 @@ export default {
       { text: 'Название', value: 'attributes.title' },
       { text: 'Начало торгов', value: 'attributes.starts_at' },
       { text: 'Окончание торгов', value: 'attributes.ends_at' },
-      { text: 'Дата создания', value: 'attributes.created_at' },
-      {
-        text: 'Начальная цена',
-        sortable: false,
-        value: 'attributes.price_start',
-      },
+
       { text: 'Продавец', value: 'relationships.seller.data.id' },
       { text: 'Организатор', value: 'relationships.organizer.data.id' },
       { text: 'Статус', value: 'attributes.status' },
+      {
+        text: 'Начальная цена',
+        align: 'right',
+        sortable: false,
+        value: 'attributes.price_start',
+      },
+      { text: 'Дата создания', value: 'attributes.created_at', align: 'right' },
     ],
   }),
   methods: {
