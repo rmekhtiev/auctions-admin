@@ -18,11 +18,12 @@
       ref="role"
       v-model="value.role"
       :items="roles"
+      item-text="name"
+      item-value="value"
       prepend-icon="mdi-account-box-outline"
       label="Роль"
       required
     >
-      <template v-slot:item="{ item }">{{ item }}</template>
     </v-select>
   </v-form>
 </template>
@@ -34,7 +35,12 @@ export default {
   name: 'UserForm',
   mixins: [resourceForm],
   data: () => ({
-    roles: ['ADMIN', 'MODERATOR', 'USER', 'BANKRUPTCY_MANGER'],
+    roles: [
+      { value: 'ADMIN', name: 'Администратор' },
+      { value: 'MODERATOR', name: 'Модератор' },
+      { value: 'USER', name: 'Пользователь' },
+      { value: 'BANKRUPTCY_MANGER', name: 'Антикризисный' },
+    ],
   }),
   mounted() {
     setTimeout(() => {
