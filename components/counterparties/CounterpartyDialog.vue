@@ -4,7 +4,10 @@
     :actions="actions"
     :handle="handleClick"
   >
-    <counterparty-form v-model="editedValue.attributes" />
+    <counterparty-form
+      v-model="editedValue.attributes"
+      :final="final.attributes"
+    />
   </dialog-card>
 </template>
 

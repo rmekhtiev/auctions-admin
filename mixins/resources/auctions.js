@@ -31,6 +31,7 @@ export default {
       const res = await this.$dialog.confirm({
         text: `Вы уверены, что хотите обновить статус на ${translation}?`,
         title: 'Внимание',
+        persistent: true,
       })
 
       if (res !== false) {

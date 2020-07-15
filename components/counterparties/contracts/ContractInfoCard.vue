@@ -40,7 +40,9 @@ export default {
   },
   methods: {
     async createContract() {
-      const dialog = await this.$dialog.showAndWait(ContractDialog)
+      const dialog = await this.$dialog.showAndWait(ContractDialog, {
+        persistent: true,
+      })
 
       if (dialog !== false) {
         const data = {

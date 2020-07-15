@@ -1,10 +1,14 @@
 <template>
   <v-card>
-    <v-card-text>
+    <v-card-title>
       <div class="overline">
         Аукцион
       </div>
-    </v-card-text>
+      <v-spacer />
+      <v-btn icon @click="updateAuction()">
+        <v-icon>mdi-pencil</v-icon>
+      </v-btn>
+    </v-card-title>
     <v-list>
       <v-list-item>
         <v-list-item-avatar>
@@ -143,6 +147,8 @@
 </template>
 
 <script>
+import AuctionDialog from '~/components/auctions/AuctionDialog'
+
 export default {
   name: 'AuctionInfoCard',
   props: {
@@ -161,6 +167,43 @@ export default {
       return this.$store.getters['counterparties/byId']({
         id: this.auction.relationships.organizer.data.id,
       })
+    },
+  },
+  methods: {
+    async updateAuction() {
+      const final = this.auction
+      final.attributes.seller_id = this.auction.relationships.seller.data.id
+      final.attributes.organizer_id = this.auction.relationships.organizer.data.id
+      const dialog = await this.$dialog.showAndWait(AuctionDialog, {
+        final,
+        persistent: true,
+      })
+
+      if (dialog !== false) {
+        const formData = {
+          attributes: dialog.attributes,
+          relationships: {
+            seller: {
+              data: {
+                type: 'counterparties',
+                id: `${dialog.attributes.seller_id}`,
+              },
+            },
+            organizer: {
+              data: {
+                type: 'counterparties',
+                id: `${dialog.attributes.organizer_id}`,
+              },
+            },
+          },
+          id: this.auction.id,
+          type: 'auctions',
+        }
+        await this.$store.dispatch('auctions/update', formData)
+        this.$store.dispatch('auctions/loadById', {
+          id: this.$route.params.id,
+        })
+      }
     },
   },
 }

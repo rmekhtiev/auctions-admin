@@ -79,13 +79,15 @@ export default {
   }),
   methods: {
     async createUser(openPage = true) {
-      const dialog = await this.$dialog.showAndWait(UserDialog)
+      const dialog = await this.$dialog.showAndWait(UserDialog, {
+        persistent: true,
+        authUser: this.$auth.user, // Так как в диалоге нельзя вызвать $auth, передаем prop todo
+      })
 
       if (dialog !== false) {
-        this.$store.dispatch('users/create', dialog).then(() => {
-          const user = this.$store.getters['users/lastCreated']
-          return openPage && this.openUserPage(user)
-        })
+        await this.$store.dispatch('users/create', dialog)
+        const user = this.$store.getters['users/lastCreated']
+        return openPage && this.openUserPage(user)
       }
     },
   },

@@ -95,5 +95,15 @@ export default {
       Object.assign(this.value, { name: this.name })
     },
   },
+  created() {
+    // eslint-disable-next-line no-prototype-builtins
+    this.full_name = this.final.hasOwnProperty('name')
+      ? this.final.name.full_name
+      : ''
+    // eslint-disable-next-line no-prototype-builtins
+    this.short_name = this.final.hasOwnProperty('name')
+      ? this.final.name.short_name
+      : ''
+  },
 }
 </script>

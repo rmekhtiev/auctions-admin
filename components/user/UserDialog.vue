@@ -4,7 +4,11 @@
     :actions="actions"
     :handle="handleClick"
   >
-    <user-form v-model="editedValue.attributes"></user-form>
+    <user-form
+      v-model="editedValue.attributes"
+      :final="final.attributes"
+      :auth-user="authUser"
+    ></user-form>
   </dialog-card>
 </template>
 
@@ -20,6 +24,10 @@ export default {
   mixins: [resourceDialog],
   props: {
     user: {
+      type: Object,
+      default: null,
+    },
+    authUser: {
       type: Object,
       default: null,
     },

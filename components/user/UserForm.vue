@@ -6,25 +6,28 @@
       prepend-icon="mdi-account"
       label="Логин"
       required
-    ></v-text-field>
+    />
     <v-text-field
       ref="email"
       v-model="value.email"
       prepend-icon="mdi-email"
       label="E-mail"
       required
-    ></v-text-field>
+    />
     <v-select
       ref="role"
       v-model="value.role"
       :items="roles"
       item-text="name"
       item-value="value"
+      item-disabled="disabled"
       prepend-icon="mdi-account-box-outline"
       label="Роль"
       required
-    >
-    </v-select>
+      :disabled="
+        final.role === 'ADMIN' && authUser.attributes.role === 'MODERATOR'
+      "
+    />
   </v-form>
 </template>
 
@@ -34,14 +37,30 @@ import resourceForm from '../../mixins/resourceForm'
 export default {
   name: 'UserForm',
   mixins: [resourceForm],
+  props: {
+    authUser: {
+      type: Object,
+      default: null,
+    },
+  },
   data: () => ({
-    roles: [
+    role: [
       { value: 'ADMIN', name: 'Администратор' },
       { value: 'MODERATOR', name: 'Модератор' },
       { value: 'USER', name: 'Пользователь' },
       { value: 'BANKRUPTCY_MANGER', name: 'Антикризисный' },
     ],
   }),
+  computed: {
+    roles() {
+      this.role.map((item) => {
+        item.disabled =
+          this.authUser.attributes.role !== 'ADMIN' &&
+          (item.value === 'ADMIN' || item.value === 'MODERATOR')
+      })
+      return this.role
+    },
+  },
   mounted() {
     setTimeout(() => {
       this.$refs.login.focus()
