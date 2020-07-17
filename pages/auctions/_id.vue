@@ -39,14 +39,23 @@
         <auction-status-card :auction="auction" />
       </v-col>
     </v-row>
+    <v-row>
+      <v-col sm="12" md="12" lg="8">
+        <participation-requests-table
+          :participation-requests="participationRequests"
+        />
+      </v-col>
+    </v-row>
   </div>
 </template>
 
 <script>
 import auctions from '~/mixins/resources/auctions'
 import AddressDialog from '~/components/counterparties/addresses/AddressDialog'
+import ParticipationRequestsTable from '~/components/participation-requests/ParticipationRequestsTable'
 
 export default {
+  components: { ParticipationRequestsTable },
   mixins: [auctions],
 
   fetch: ({ store, params }) => {
@@ -55,6 +64,12 @@ export default {
         id: params.id,
       }),
       store.dispatch('lots/loadRelated', {
+        parent: {
+          id: params.id,
+          type: 'auctions',
+        },
+      }),
+      store.dispatch('participation-requests/loadRelated', {
         parent: {
           id: params.id,
           type: 'auctions',
@@ -84,6 +99,11 @@ export default {
       return this.$store.getters['counterparties/related']({
         parent: this.auction,
         relationship: 'organizer',
+      })
+    },
+    participationRequests() {
+      return this.$store.getters['participation-requests/related']({
+        parent: this.auction,
       })
     },
   },

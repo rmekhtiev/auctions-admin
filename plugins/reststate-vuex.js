@@ -30,6 +30,10 @@ export default function ({ $axios, store }) {
     'contracts',
     resourceModule({ name: 'contracts', httpClient: $axios })
   )
+  store.registerModule(
+    'participation-requests',
+    resourceModule({ name: 'participation-requests', httpClient: $axios })
+  )
 
   store.registerModule('jv', jsonapiModule($axios))
 }
