@@ -32,6 +32,23 @@
       </v-col>
 
       <v-col sm="6" md="2">
+        <v-select
+          v-model="filter.lot_category"
+          :items="categories"
+          prepend-inner-icon="mdi-account-supervisor"
+          label="Категория"
+          single-line
+          filled
+          clearable
+          multiple
+          name="lot_category"
+          item-value="value"
+          item-text="name"
+          @input="loadItems()"
+        />
+      </v-col>
+
+      <v-col sm="6" md="2">
         <v-menu
           ref="menu"
           v-model="menu"
@@ -185,6 +202,15 @@ export default {
         value: 'attributes.price_start',
       },
       { text: 'Дата создания', value: 'attributes.created_at', align: 'right' },
+    ],
+    categories: [
+      { value: 'realty', name: 'Недвижимость' },
+      { value: 'vehicle', name: 'Транспорт' },
+      { value: 'equipment', name: 'Оборудование' },
+      { value: 'receivables', name: 'Дебиторская задолжность' },
+      { value: 'enterprise', name: 'Предприятие' },
+      { value: 'spare-part', name: 'Запчасти' },
+      { value: 'inventory', name: 'Инвентарь' },
     ],
   }),
   methods: {
