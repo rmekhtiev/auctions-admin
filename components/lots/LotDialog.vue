@@ -4,7 +4,7 @@
     :actions="actions"
     :handle="handleClick"
   >
-    <lot-form v-model="editedValue.attributes" />
+    <lot-form v-model="editedValue.attributes" :final="final.attributes" />
   </dialog-card>
 </template>
 

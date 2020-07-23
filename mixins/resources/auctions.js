@@ -1,5 +1,14 @@
 export default {
-  data: () => ({}),
+  data: () => ({
+    auctionStatuses: [
+      { title: 'Черновик', value: 'DRAFT' },
+      { title: 'На модерации', value: 'PENDING' },
+      { title: 'Предстоящий', value: 'UPCOMING' },
+      { title: 'Отмененные', value: 'CANCELLED' },
+      { title: 'Несостоявшиеся', value: 'FAILED' },
+      { title: 'Состоявшиеся', value: 'SUCCESSED' },
+    ],
+  }),
 
   computed: {},
 
@@ -19,7 +28,9 @@ export default {
       })
 
       if (res !== false) {
-        this.$store.dispatch('auctions/delete', { id })
+        this.$store.dispatch('auctions/delete', { id }).then(() => {
+          this.$router.push({ name: 'auctions' })
+        })
       }
     },
 
@@ -29,6 +40,7 @@ export default {
       const res = await this.$dialog.confirm({
         text: `Вы уверены, что хотите обновить статус на ${translation}?`,
         title: 'Внимание',
+        persistent: true,
       })
 
       if (res !== false) {

@@ -1,6 +1,13 @@
 <template>
   <v-form>
     <v-text-field v-model="value.title" label="Название" :rules="rules.title" />
+    <v-select
+      v-model="value.category"
+      :items="categories"
+      item-value="value"
+      item-text="name"
+      label="Категория"
+    />
     <v-text-field
       v-model="value.price_start"
       label="Начальная цена"
@@ -37,6 +44,15 @@ export default {
     rules: {
       title: [(value) => !!value || 'Это поле обязательное'],
     },
+    categories: [
+      { value: 'realty', name: 'Недвижимость' },
+      { value: 'vehicle', name: 'Транспорт' },
+      { value: 'equipment', name: 'Оборудование' },
+      { value: 'receivables', name: 'Дебиторская задолжность' },
+      { value: 'enterprise', name: 'Предприятие' },
+      { value: 'spare-part', name: 'Запчасти' },
+      { value: 'inventory', name: 'Инвентарь' },
+    ],
   }),
 }
 </script>

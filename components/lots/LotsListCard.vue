@@ -28,7 +28,7 @@
         </v-list-item-content>
 
         <v-list-item-action>
-          <v-btn icon>
+          <v-btn icon @click="updateLot(lot)">
             <v-icon color="grey lighten-1">mdi-pencil</v-icon>
           </v-btn>
         </v-list-item-action>
@@ -54,7 +54,9 @@ export default {
 
   methods: {
     async createLot() {
-      const dialog = await this.$dialog.showAndWait(LotDialog)
+      const dialog = await this.$dialog.showAndWait(LotDialog, {
+        persistent: true,
+      })
 
       if (dialog !== false) {
         const formData = {
@@ -69,11 +71,37 @@ export default {
           },
         }
 
-        this.$store
-          .dispatch('lots/create', formData)
-          .then(() =>
-            this.$emit('created', this.$store.getters['lots/lastCreated'])
-          )
+        await this.$store.dispatch('lots/create', formData)
+        this.$store.dispatch('lots/loadRelated', {
+          parent: { id: this.auction.id, type: 'auctions' },
+        })
+      }
+    },
+    async updateLot(lot) {
+      const dialog = await this.$dialog.showAndWait(LotDialog, {
+        final: lot,
+        title: 'Редактирование лота',
+        persistent: true,
+      })
+
+      if (dialog !== false) {
+        const formData = {
+          attributes: dialog.attributes,
+          id: lot.id,
+          type: 'lots',
+          relationships: {
+            auction: {
+              data: {
+                type: 'auctions',
+                id: `${this.auction.id}`,
+              },
+            },
+          },
+        }
+        await this.$store.dispatch('lots/update', formData)
+        this.$store.dispatch('lots/loadById', {
+          id: lot.id,
+        })
       }
     },
   },

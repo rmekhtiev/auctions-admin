@@ -39,14 +39,23 @@
         <auction-status-card :auction="auction" />
       </v-col>
     </v-row>
+    <v-row v-if="participationRequests.length">
+      <v-col sm="12" md="12" lg="8">
+        <participation-requests-table
+          :participation-requests="participationRequests"
+        />
+      </v-col>
+    </v-row>
   </div>
 </template>
 
 <script>
 import auctions from '~/mixins/resources/auctions'
 import AddressDialog from '~/components/counterparties/addresses/AddressDialog'
+import ParticipationRequestsTable from '~/components/participation-requests/ParticipationRequestsTable'
 
 export default {
+  components: { ParticipationRequestsTable },
   mixins: [auctions],
 
   fetch: ({ store, params }) => {
@@ -55,6 +64,12 @@ export default {
         id: params.id,
       }),
       store.dispatch('lots/loadRelated', {
+        parent: {
+          id: params.id,
+          type: 'auctions',
+        },
+      }),
+      store.dispatch('participation-requests/loadRelated', {
         parent: {
           id: params.id,
           type: 'auctions',
@@ -86,11 +101,18 @@ export default {
         relationship: 'organizer',
       })
     },
+    participationRequests() {
+      return this.$store.getters['participation-requests/related']({
+        parent: this.auction,
+      })
+    },
   },
 
   methods: {
     async addAddress() {
-      const dialog = await this.$dialog.showAndWait(AddressDialog)
+      const dialog = await this.$dialog.showAndWait(AddressDialog, {
+        persistent: true,
+      })
 
       if (dialog !== false) {
         const formData = {
@@ -106,10 +128,9 @@ export default {
         }
         formData.attributes.country_code = 'BY'
 
-        this.$store.dispatch('addresses/create', formData).then(() => {
-          this.$store.dispatch('auctions/loadById', {
-            id: this.$route.params.id,
-          })
+        await this.$store.dispatch('addresses/create', formData)
+        this.$store.dispatch('auctions/loadById', {
+          id: this.$route.params.id,
         })
       }
     },

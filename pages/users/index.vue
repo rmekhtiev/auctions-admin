@@ -16,7 +16,7 @@
       </v-col>
       <v-col sm="6" md="4" lg="3">
         <v-select
-          v-model="filter.roles"
+          v-model="filter.role"
           :items="userRoles"
           prepend-inner-icon="mdi-account-supervisor"
           label="Роли"
@@ -44,11 +44,14 @@
             :options.sync="iteratorOptions"
             :server-items-length="totalItems"
             :loading="itemsLoading"
-            multi-sort
             @click:row="(_e, { item }) => openUserPage(item)"
           >
             <template v-slot:item.attributes.role="{ item }">
               {{ $t(`roles.${item.attributes.role}`) }}
+            </template>
+            <template v-slot:item.attributes.created_at="{ item }">
+              {{ $moment(item.attributes.starts_at).format('LL') }},
+              {{ $moment(item.attributes.starts_at).format('LT') }}
             </template>
           </v-data-table>
         </v-card>
@@ -74,18 +77,22 @@ export default {
   data: () => ({
     headers: [
       { text: 'Логин', value: 'attributes.login' },
-      { text: 'Роль', sortable: false, value: 'attributes.role' },
+      { text: 'Email', value: 'attributes.email' },
+      { text: 'Дата регистрации', value: 'attributes.created_at' },
+      { text: 'Роль', value: 'attributes.role' },
     ],
   }),
   methods: {
     async createUser(openPage = true) {
-      const dialog = await this.$dialog.showAndWait(UserDialog)
+      const dialog = await this.$dialog.showAndWait(UserDialog, {
+        persistent: true,
+        authUser: this.$auth.user, // Так как в диалоге нельзя вызвать $auth, передаем prop todo
+      })
 
       if (dialog !== false) {
-        this.$store.dispatch('users/create', dialog).then(() => {
-          const user = this.$store.getters['users/lastCreated']
-          return openPage && this.openUserPage(user)
-        })
+        await this.$store.dispatch('users/create', dialog)
+        const user = this.$store.getters['users/lastCreated']
+        return openPage && this.openUserPage(user)
       }
     },
   },

@@ -28,7 +28,6 @@
             :options.sync="iteratorOptions"
             :server-items-length="totalItems"
             :loading="itemsLoading"
-            multi-sort
             @click:row="(_e, { item }) => openCounterpartyPage(item)"
           >
             <template v-slot:item.attributes.display_name="{ item }">
@@ -73,19 +72,20 @@ export default {
   mixins: [serverSidePaginated({ resource: 'counterparties' }), counterparties],
   data: () => ({
     headers: [
-      { text: 'Название', sortable: false, value: 'attributes.display_name' },
+      { text: 'Название', value: 'attributes.display_name' },
       { text: 'Тип', value: 'attributes._type' },
     ],
   }),
   methods: {
     async createCounterparty(openPage = true) {
-      const dialog = await this.$dialog.showAndWait(CounterpartyDialog)
+      const dialog = await this.$dialog.showAndWait(CounterpartyDialog, {
+        persistent: true,
+      })
 
       if (dialog !== false) {
-        this.$store.dispatch('counterparties/create', dialog).then(() => {
-          const counterparty = this.$store.getters['counterparties/lastCreated']
-          return openPage && this.openCounterpartyPage(counterparty)
-        })
+        await this.$store.dispatch('counterparties/create', dialog)
+        const counterparty = this.$store.getters['counterparties/lastCreated']
+        return openPage && this.openCounterpartyPage(counterparty)
       }
     },
   },
