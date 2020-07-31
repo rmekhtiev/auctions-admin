@@ -27,38 +27,6 @@
       placeholder="Введите когда выдан паспорт"
     />
     <v-text-field
-      v-model.trim="value.inn"
-      label="УНП"
-      placeholder="Введите УНП"
-      counter="9"
-      :rules="rules.counterparties.inn"
-    />
-    <v-menu
-      v-model="menu"
-      :close-on-content-click="false"
-      :nudge-right="40"
-      transition="scale-transition"
-      offset-y
-      min-width="290px"
-    >
-      <template v-slot:activator="{ on, attrs }">
-        <v-text-field
-          v-model="value.egr_date"
-          label="Дата ЕГР"
-          placeholder="Введите дату внесения в ЕГР"
-          :rules="rules.counterparties.egr_date"
-          readonly
-          v-bind="attrs"
-          v-on="on"
-        ></v-text-field>
-      </template>
-      <v-date-picker
-        v-model="value.egr_date"
-        locale="ru"
-        @input="menu = false"
-      ></v-date-picker>
-    </v-menu>
-    <v-text-field
       v-model="value.email"
       label="Электронная почта"
       placeholder="Введите электронную почту"

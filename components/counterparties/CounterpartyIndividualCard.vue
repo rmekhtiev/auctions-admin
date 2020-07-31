@@ -53,20 +53,12 @@
           </v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
-      <v-list-item two-line>
+      <v-list-item v-if="counterparty.attributes.display_address" two-line>
         <v-list-item-icon>
-          <v-icon>mdi-pound</v-icon>
+          <v-icon>
+            mdi-home
+          </v-icon>
         </v-list-item-icon>
-        <v-list-item-content>
-          <v-list-item-title>
-            УНП: <span>{{ counterparty.attributes.inn }}</span>
-          </v-list-item-title>
-          <v-list-item-subtitle>
-            от {{ $moment(counterparty.attributes.egr_date).format('LL') }}
-          </v-list-item-subtitle>
-        </v-list-item-content>
-      </v-list-item>
-      <v-list-item v-if="counterparty.attributes.display_address">
         <v-list-item-content>
           <v-list-item-title style="white-space: initial;">
             <span>{{ counterparty.attributes.display_address }}</span>
