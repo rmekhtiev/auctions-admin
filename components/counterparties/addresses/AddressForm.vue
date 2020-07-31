@@ -4,25 +4,25 @@
     <v-text-field
       v-model="value.state"
       label="Область"
-      :rules="rules.state"
+      :rules="rules.addresses.state"
       autocomplete="no"
     />
     <v-text-field
       v-model="value.city"
       label="Город"
-      :rules="rules.city"
+      :rules="rules.addresses.city"
       autocomplete="no"
     />
     <v-text-field
       v-model="value.address"
       label="Адрес"
-      :rules="rules.address"
+      :rules="rules.addresses.address"
       autocomplete="no"
     />
     <v-text-field
       v-model="value.postal_code"
       label="Индекс"
-      :rules="rules.postal_code"
+      :rules="rules.addresses.postal_code"
       counter="6"
       autocomplete="no"
       @keypress="onlyNumber"
@@ -32,18 +32,10 @@
 
 <script>
 import resourceForm from '~/mixins/resourceForm'
+import formRules from '~/mixins/formRules'
 
 export default {
   name: 'AddressForm',
-  mixins: [resourceForm],
-  data: () => ({
-    rules: {
-      country_code: [(value) => !!value || 'Это поле обязательное'],
-      state: [(value) => !!value || 'Это поле обязательное'],
-      city: [(value) => !!value || 'Это поле обязательное'],
-      address: [(value) => !!value || 'Это поле обязательное'],
-      postal_code: [(value) => !!value || 'Это поле обязательное'],
-    },
-  }),
+  mixins: [resourceForm, formRules],
 }
 </script>
