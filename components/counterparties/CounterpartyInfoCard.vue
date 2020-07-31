@@ -73,7 +73,7 @@
           <v-icon>mdi-home</v-icon>
         </v-list-item-icon>
         <v-list-item-content>
-          <v-list-item-title>
+          <v-list-item-title style="white-space: initial;">
             {{ counterparty.attributes.display_address }}
           </v-list-item-title>
         </v-list-item-content>
