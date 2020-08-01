@@ -3,7 +3,7 @@
     <v-text-field v-model="value.title" label="Название" required />
 
     <template>
-      <v-file-input v-model="value.image" label="Скан" />
+      <v-file-input v-model="value.image" label="Изображение" />
     </template>
   </v-form>
 </template>
