@@ -40,7 +40,13 @@
           </v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
-      <v-list-item two-line>
+      <v-list-item
+        v-if="
+          counterparty.attributes._type === 'UL' ||
+          counterparty.attributes._type === 'IP'
+        "
+        two-line
+      >
         <v-list-item-icon>
           <v-icon>mdi-pound</v-icon>
         </v-list-item-icon>
@@ -73,7 +79,7 @@
           <v-icon>mdi-home</v-icon>
         </v-list-item-icon>
         <v-list-item-content>
-          <v-list-item-title>
+          <v-list-item-title style="white-space: initial;">
             {{ counterparty.attributes.display_address }}
           </v-list-item-title>
         </v-list-item-content>

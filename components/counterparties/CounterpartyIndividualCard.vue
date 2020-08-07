@@ -2,7 +2,7 @@
   <v-card>
     <v-card-title>
       <div class="overline">
-        {{ heading || 'Юридическое лицо' }}
+        {{ heading || 'Физическое лицо' }}
       </div>
       <v-spacer />
       <v-btn
@@ -14,10 +14,10 @@
       </v-btn>
     </v-card-title>
     <v-list>
-      <v-list-item two-line>
+      <v-list-item>
         <v-list-item-icon>
           <v-icon>
-            mdi-domain
+            mdi-account
           </v-icon>
         </v-list-item-icon>
         <v-list-item-content>
@@ -32,25 +32,33 @@
               mdi-check-circle-outline
             </v-icon>
           </v-list-item-title>
-          <v-list-item-subtitle>
-            {{ counterparty.attributes.name.full_name }}
-          </v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
-      <v-list-item two-line>
+      <v-list-item three-line>
         <v-list-item-icon>
-          <v-icon>mdi-pound</v-icon>
+          <v-icon>
+            mdi-passport
+          </v-icon>
         </v-list-item-icon>
         <v-list-item-content>
           <v-list-item-title>
-            УНП: <span>{{ counterparty.attributes.inn }}</span>
+            {{ counterparty.attributes.document.passport_number }}
           </v-list-item-title>
           <v-list-item-subtitle>
-            от {{ $moment(counterparty.attributes.egr_date).format('LL') }}
+            {{ counterparty.attributes.document.passport_personal }}
+          </v-list-item-subtitle>
+          <v-list-item-subtitle>
+            Выдан {{ counterparty.attributes.document.passport_issuer }}
+            {{ counterparty.attributes.document.passport_date }}
           </v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
-      <v-list-item v-if="counterparty.attributes.display_address">
+      <v-list-item v-if="counterparty.attributes.display_address" two-line>
+        <v-list-item-icon>
+          <v-icon>
+            mdi-home
+          </v-icon>
+        </v-list-item-icon>
         <v-list-item-content>
           <v-list-item-title style="white-space: initial;">
             <span>{{ counterparty.attributes.display_address }}</span>
@@ -66,7 +74,7 @@
 
 <script>
 export default {
-  name: 'CounterpartyLegalEntityCard',
+  name: 'CounterpartyIndividualCard',
   props: {
     counterparty: {
       type: Object,

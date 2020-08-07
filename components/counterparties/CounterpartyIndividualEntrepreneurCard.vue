@@ -2,7 +2,7 @@
   <v-card>
     <v-card-title>
       <div class="overline">
-        {{ heading || 'Юридическое лицо' }}
+        {{ heading || 'Индивидуальный предпринематель' }}
       </div>
       <v-spacer />
       <v-btn
@@ -14,10 +14,10 @@
       </v-btn>
     </v-card-title>
     <v-list>
-      <v-list-item two-line>
+      <v-list-item>
         <v-list-item-icon>
           <v-icon>
-            mdi-domain
+            mdi-account
           </v-icon>
         </v-list-item-icon>
         <v-list-item-content>
@@ -32,8 +32,24 @@
               mdi-check-circle-outline
             </v-icon>
           </v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
+      <v-list-item three-line>
+        <v-list-item-icon>
+          <v-icon>
+            mdi-passport
+          </v-icon>
+        </v-list-item-icon>
+        <v-list-item-content>
+          <v-list-item-title>
+            {{ counterparty.attributes.document.passport_number }}
+          </v-list-item-title>
           <v-list-item-subtitle>
-            {{ counterparty.attributes.name.full_name }}
+            {{ counterparty.attributes.document.passport_personal }}
+          </v-list-item-subtitle>
+          <v-list-item-subtitle>
+            Выдан {{ counterparty.attributes.document.passport_issuer }}
+            {{ counterparty.attributes.document.passport_date }}
           </v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
@@ -66,7 +82,7 @@
 
 <script>
 export default {
-  name: 'CounterpartyLegalEntityCard',
+  name: 'CounterpartyIndividualEntrepreneurCard',
   props: {
     counterparty: {
       type: Object,
