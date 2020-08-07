@@ -36,7 +36,13 @@
         <counterparty-legal-card :counterparty="seller" :heading="'Продавец'" />
       </v-col>
       <v-col sm="12" md="6" lg="4" class="order-first order-lg-last">
-        <auction-status-card :auction="auction" />
+        <auction-status-card :auction="auction" class="mb-6" />
+
+        <image-info-card
+          :auction="auction"
+          :images="images"
+          @created="loadImages"
+        />
       </v-col>
     </v-row>
     <v-row v-if="participationRequests.length">
@@ -75,6 +81,12 @@ export default {
           type: 'auctions',
         },
       }),
+      store.dispatch('auction-images/loadRelated', {
+        parent: {
+          id: params.id,
+          type: 'auctions',
+        },
+      }),
     ])
   },
 
@@ -106,9 +118,20 @@ export default {
         parent: this.auction,
       })
     },
+    images() {
+      return this.$store.getters['auction-images/related']({
+        parent: this.auction,
+      })
+    },
   },
 
   methods: {
+    loadImages() {
+      return this.$store.dispatch('auction-images/loadRelated', {
+        parent: this.auction,
+      })
+    },
+
     async addAddress() {
       const dialog = await this.$dialog.showAndWait(AddressDialog, {
         persistent: true,
