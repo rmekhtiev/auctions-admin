@@ -27,7 +27,7 @@
     "@nuxtjs/axios": "^5.11.0",
     "@nuxtjs/pwa": "^3.0.0-beta.20",
     "@nuxtjs/toast": "^3.3.0",
-    "@reststate/vuex": "^0.2.2",
+    "@reststate/vuex": "https://github.com/leon0399/reststate-vuex",
     "concat-stream": "^2.0.0",
     "jsonapi-vuex": "^4.3.3",
     "nuxt": "^2.13.0",

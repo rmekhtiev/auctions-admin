@@ -1320,10 +1320,9 @@
   resolved "https://registry.yarnpkg.com/@reststate/client/-/client-0.0.8.tgz#e5b0c2786adb4cda425d28cd4b6a1421d8b8270e"
   integrity sha512-j7qw2nNvWvGQTRRfhTvfvSAUOoDKoBJ2SNAXcFw1XWk9bogFXXGg4NZzpgIqqqf9LBYrt74Rv8v5VfcrAiq/1g==
 
-"@reststate/vuex@^0.2.2":
+"@reststate/vuex@https://github.com/leon0399/reststate-vuex":
   version "0.2.2"
-  resolved "https://registry.yarnpkg.com/@reststate/vuex/-/vuex-0.2.2.tgz#fdb76f2d38f4a263ab3d1ac98b0d9b17d824a2a8"
-  integrity sha512-cftXx1z4EnvcLWL9E9SYRJ6GwiFFhocozBYRvGm/aanetfKjcJxFzoLjYM7kkotSxJgwTTjwK6crG//hQKqalQ==
+  resolved "https://github.com/leon0399/reststate-vuex#2e423ece8beff9f5b7620231ad90717660551f91"
   dependencies:
     "@reststate/client" "^0.0.8"
 

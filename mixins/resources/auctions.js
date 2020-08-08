@@ -46,7 +46,11 @@ export default {
       if (res !== false) {
         auction.attributes.status = newStatus
 
-        return this.$store.dispatch('auctions/update', auction)
+        return this.$store.dispatch('auctions/update', {
+          id: auction.id,
+          type: auction.type,
+          attributes: auction.attributes,
+        })
       }
     },
   },
