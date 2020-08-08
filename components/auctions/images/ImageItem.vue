@@ -1,10 +1,10 @@
 <template>
   <v-list-item>
-    <v-list-item-icon>
-      <v-icon>
-        mdi-file-image-outline
-      </v-icon>
-    </v-list-item-icon>
+    <v-list-item-avatar>
+      <v-avatar>
+        <v-img :src="image.attributes.path" :alt="image.attributes.title" />
+      </v-avatar>
+    </v-list-item-avatar>
     <v-list-item-content>
       <v-list-item-title>
         {{ image.attributes.title }}
