@@ -33,9 +33,13 @@
               </v-list-item-action>
             </v-list-item>
 
-            <v-sheet height="100%">
+            <v-sheet max-height="100vh" height="100%">
               <v-row>
-                <v-img aspect-ratio :src="image.attributes.path"></v-img>
+                <v-img
+                  contain
+                  max-height="100vh"
+                  :src="image.attributes.path"
+                ></v-img>
               </v-row>
             </v-sheet>
           </v-carousel-item>

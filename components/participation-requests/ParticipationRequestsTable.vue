@@ -7,18 +7,36 @@
     </v-card-title>
     <v-data-table :headers="headers" :items="participationRequests">
       <template v-slot:item.counterparty="{ item }">
-        {{
-          $store.getters['counterparties/byId']({
-            id: item.relationships.counterparty.data.id,
-          }).attributes.display_name
-        }}
+        <nuxt-link
+          :to="{
+            name: 'auctions-id',
+            params: {
+              id: item.relationships.counterparty.data.id,
+            },
+          }"
+        >
+          {{
+            $store.getters['counterparties/byId']({
+              id: item.relationships.counterparty.data.id,
+            }).attributes.display_name
+          }}
+        </nuxt-link>
       </template>
       <template v-slot:item.author="{ item }">
-        {{
-          $store.getters['users/byId']({
-            id: item.relationships.author.data.id,
-          }).attributes.login
-        }}
+        <nuxt-link
+          :to="{
+            name: 'users-id',
+            params: {
+              id: item.relationships.author.data.id,
+            },
+          }"
+        >
+          {{
+            $store.getters['users/byId']({
+              id: item.relationships.author.data.id,
+            }).attributes.login
+          }}
+        </nuxt-link>
       </template>
       <template v-slot:item.actions="{ item }">
         <v-icon
@@ -28,7 +46,7 @@
         >
           mdi-check
         </v-icon>
-        <v-icon @click="rejectRequest(item)">
+        <v-icon v-if="item.attributes.approved_at" @click="rejectRequest(item)">
           mdi-close
         </v-icon>
       </template>
@@ -42,6 +60,7 @@ export default {
   props: {
     participationRequests: {
       type: Array,
+      required: true,
     },
   },
   data: () => ({
