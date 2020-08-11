@@ -6,7 +6,9 @@
         <v-spacer />
       </v-card-title>
       <v-list>
-        <bet-list-item :bets="bets" />
+        <div v-for="bet in bets" :key="bet.id">
+          <bet-list-item :bet="bet" />
+        </div>
       </v-list>
     </v-card>
   </div>
@@ -14,7 +16,7 @@
 
 <script>
 export default {
-  name: 'BetsLegalCard',
+  name: 'BetsInfoCard',
 
   props: {
     bets: {
