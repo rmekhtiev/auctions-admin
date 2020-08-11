@@ -8,13 +8,6 @@
       @click="updateStatus(auction, 'DRAFT')"
       v-text="$t(`auctions.statuses.DRAFT.back`)"
     />
-
-    <v-btn
-      text
-      color="red"
-      @click="updateStatus(auction, 'CANCELLED')"
-      v-text="$t(`auctions.statuses.CANCELLED.to`)"
-    />
   </v-card-actions>
 </template>
 

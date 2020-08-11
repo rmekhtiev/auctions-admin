@@ -29,11 +29,16 @@
       </v-col>
       <v-col sm="12" md="6" lg="4">
         <counterparty-legal-card
+          v-if="organizer"
           :counterparty="organizer"
           :heading="'Организатор'"
           class="mb-6"
         />
-        <counterparty-legal-card :counterparty="seller" :heading="'Продавец'" />
+        <counterparty-legal-card
+          v-if="seller"
+          :counterparty="seller"
+          :heading="'Продавец'"
+        />
       </v-col>
       <v-col sm="12" md="6" lg="4" class="order-first order-lg-last">
         <auction-status-card :auction="auction" class="mb-6" />

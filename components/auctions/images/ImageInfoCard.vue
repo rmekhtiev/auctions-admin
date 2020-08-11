@@ -7,9 +7,15 @@
         <v-icon>mdi-plus</v-icon>
       </v-btn>
     </v-card-title>
-    <div v-for="(image, i) in images" :key="image.id" @click="openGallery(i)">
-      <image-item :image="image" />
-    </div>
+
+    <v-list>
+      <image-item
+        v-for="(image, i) in images"
+        :key="image.id"
+        :image="image"
+        @click.native="openGallery(i)"
+      />
+    </v-list>
 
     <v-dialog v-model="galleryDialog" max-width="900" class="px-3">
       <v-card>
