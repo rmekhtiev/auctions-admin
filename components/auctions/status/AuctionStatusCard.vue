@@ -27,6 +27,7 @@
       <draft-status-actions v-if="isDraft" :auction="auction" />
       <pending-status-actions v-if="isPending" :auction="auction" />
       <upcoming-status-actions v-if="isUpcoming" :auction="auction" />
+      <cancelled-status-actions v-if="isCancelled" :auction="auction" />
     </template>
   </v-card>
 </template>
@@ -51,6 +52,9 @@ export default {
     },
     isUpcoming() {
       return this.auction.attributes.status === 'UPCOMING'
+    },
+    isCancelled() {
+      return this.auction.attributes.status === 'CANCELLED'
     },
   },
 }

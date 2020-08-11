@@ -161,6 +161,10 @@
               </v-tooltip>
             </template>
 
+            <template v-slot:item.attributes.status="{ item }">
+              {{ $t(`auctions.statuses.${item.attributes.status}.self`) }}
+            </template>
+
             <template v-slot:item.attributes.price_start="{ item }">
               {{ item.attributes.price_start | currency }}
             </template>
