@@ -1,9 +1,7 @@
 <template>
   <v-card>
     <v-card-title>
-      <div class="overline">
-        Заявки на участие
-      </div>
+      <div class="overline">Заявки на участие</div>
     </v-card-title>
     <v-data-table :headers="headers" :items="participationRequests">
       <template v-slot:item.counterparty="{ item }">
@@ -43,6 +41,7 @@
           v-if="!item.attributes.approved_at"
           class="mr-2"
           @click="approveRequest(item)"
+          >mdi-check</v-icon
         >
           mdi-check
         </v-icon>
@@ -67,16 +66,22 @@ export default {
     headers: [
       { text: 'Контрагент', value: 'counterparty' },
       { text: 'Пользователь', value: 'author' },
-      { text: 'Действия', value: 'actions' },
+      { text: 'Действия', align: 'right', value: 'actions', sortable: false },
     ],
   }),
   methods: {
     async approveRequest(item) {
-      item.attributes.approved_at = this.$moment()
-      await this.$store.dispatch('participation-requests/update', item)
-      this.$store.dispatch('participation-requests/loadById', {
-        id: item.id,
+      const res = await this.$dialog.confirm({
+        text: 'Вы уверены, что одобрить участие?',
+        title: 'Внимание',
       })
+      if (res !== false) {
+        item.attributes.approved_at = this.$moment()
+        await this.$store.dispatch('participation-requests/update', item)
+        this.$store.dispatch('participation-requests/loadById', {
+          id: item.id,
+        })
+      }
     },
     async rejectRequest(item) {
       item.attributes.approved_at = null
