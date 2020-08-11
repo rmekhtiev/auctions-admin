@@ -34,6 +34,13 @@
       :rules="rules.lots.required"
       suffix="BYN"
     />
+    <v-text-field
+      v-model="value.step"
+      label="Шаг"
+      type="numbers"
+      :rules="rules.title"
+      suffix="BYN"
+    />
   </v-form>
 </template>
 
