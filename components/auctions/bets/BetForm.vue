@@ -7,6 +7,7 @@
       required
       :step="auction.attributes.step"
       :min="auction.attributes.price_min"
+      suffix="BYN"
       onkeydown="return false"
     />
   </v-form>

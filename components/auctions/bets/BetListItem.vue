@@ -24,9 +24,9 @@
           </v-list-item-content>
 
           <v-list-item-action>
-            <v-list-item-action-text class="mb-2"
-              >{{ bet.attributes.bet_amount }} руб.</v-list-item-action-text
-            >
+            <v-list-item-action-text class="mb-2">{{
+              bet.attributes.bet_amount | currency
+            }}</v-list-item-action-text>
             <v-menu bottom left>
               <template v-slot:activator="{ on, attrs }">
                 <v-btn icon v-bind="attrs" v-on="on">
