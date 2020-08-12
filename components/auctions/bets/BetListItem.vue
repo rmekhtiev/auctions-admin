@@ -76,12 +76,9 @@ export default {
 
   methods: {
     async updateBet() {
-      const final = this.bet
-      final.attributes.author_id = this.bet.relationships.author.data.id
-      final.attributes.auction_id = this.bet.relationships.auction.data.id
-      final.attributes.counterparty_id = this.bet.relationships.counterparty.data.id
       const dialog = await this.$dialog.showAndWait(BetDialog, {
-        final,
+        final: this.bet,
+        title: 'Редактирование ставки',
         persistent: true,
       })
 

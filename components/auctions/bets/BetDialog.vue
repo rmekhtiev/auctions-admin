@@ -1,6 +1,10 @@
 <template>
   <dialog-card title="Правка ставки" :actions="actions" :handle="handleClick">
-    <bet-form v-model="editedValue.attributes" />
+    <bet-form
+      v-model="editedValue.attributes"
+      :final="final.attributes"
+      :bet-id="final.id"
+    />
   </dialog-card>
 </template>
 
@@ -11,11 +15,5 @@ import resourceDialog from '~/mixins/resourceDialog'
 export default {
   components: { DialogCard },
   mixins: [resourceDialog],
-  props: {
-    bet: {
-      type: Object,
-      default: null,
-    },
-  },
 }
 </script>

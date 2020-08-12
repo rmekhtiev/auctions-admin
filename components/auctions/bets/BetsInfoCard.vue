@@ -20,7 +20,7 @@ export default {
 
   props: {
     bets: {
-      type: Object,
+      type: Array,
       required: true,
     },
     heading: {

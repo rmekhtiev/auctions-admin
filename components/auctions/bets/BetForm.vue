@@ -5,6 +5,9 @@
       type="number"
       label="Сумма ставки"
       required
+      :step="auction.attributes.step"
+      :min="auction.attributes.price_min"
+      onkeydown="return false"
     />
   </v-form>
 </template>
@@ -14,5 +17,18 @@ import resourceForm from '~/mixins/resourceForm'
 
 export default {
   mixins: [resourceForm],
+  props: {
+    betId: {
+      type: String,
+      required: true,
+    },
+  },
+  computed: {
+    auction() {
+      return this.$store.getters['auctions/byId']({
+        id: this.betId,
+      })
+    },
+  },
 }
 </script>
