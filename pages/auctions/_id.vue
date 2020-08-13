@@ -7,7 +7,7 @@
         <div v-if="!auction.attributes.display_address">
           <v-alert color="info" border="left" elevation="2" colored-border>
             <v-row align="center" no-gutters>
-              <v-col class="grow"> У аукциона не указан адрес. </v-col>
+              <v-col class="grow">У аукциона не указан адрес.</v-col>
               <v-col class="shrink">
                 <v-btn
                   class="mt-2 inline"
@@ -22,9 +22,14 @@
         </div>
 
         <lots-list-card
+          class="mb-6"
           :lots="lots"
           :auction="auction"
           @created="loadAuction({ id: $route.params.id })"
+        />
+
+        <participation-requests-table
+          :participation-requests="participationRequests"
         />
       </v-col>
       <v-col sm="12" md="6" lg="4">
@@ -38,7 +43,17 @@
           v-if="seller"
           :counterparty="seller"
           :heading="'Продавец'"
+          class="mb-6"
         />
+
+        <counterparty-legal-card
+          v-if="winner"
+          :counterparty="winner"
+          :heading="'Победитель'"
+          class="mb-6"
+        />
+
+        <bets-info-card :heading="'Ставки'" :bets="bets" />
       </v-col>
       <v-col sm="12" md="6" lg="4" class="order-first order-lg-last">
         <auction-status-card :auction="auction" class="mb-6" />
@@ -50,46 +65,32 @@
         />
       </v-col>
     </v-row>
-    <v-row v-if="participationRequests.length">
-      <v-col sm="12" md="12" lg="8">
-        <participation-requests-table
-          :participation-requests="participationRequests"
-        />
-      </v-col>
-    </v-row>
   </div>
 </template>
 
 <script>
 import auctions from '~/mixins/resources/auctions'
 import AddressDialog from '~/components/counterparties/addresses/AddressDialog'
-import ParticipationRequestsTable from '~/components/participation-requests/ParticipationRequestsTable'
 
 export default {
-  components: { ParticipationRequestsTable },
   mixins: [auctions],
 
   fetch: ({ store, params }) => {
     return Promise.all([
       store.dispatch('auctions/loadById', {
         id: params.id,
-      }),
-      store.dispatch('lots/loadRelated', {
-        parent: {
-          id: params.id,
-          type: 'auctions',
-        },
-      }),
-      store.dispatch('participation-requests/loadRelated', {
-        parent: {
-          id: params.id,
-          type: 'auctions',
-        },
-      }),
-      store.dispatch('auction-images/loadRelated', {
-        parent: {
-          id: params.id,
-          type: 'auctions',
+        options: {
+          include: [
+            'lots',
+            'participation-requests',
+            'participation-requests.author',
+            'participation-requests.counterparty',
+            'auction-images',
+            'bets',
+            'bets.author',
+            'bets.counterparty',
+            'winner',
+          ],
         },
       }),
     ])
@@ -126,6 +127,17 @@ export default {
     images() {
       return this.$store.getters['auction-images/related']({
         parent: this.auction,
+      })
+    },
+    bets() {
+      return this.$store.getters['bets/related']({
+        parent: this.auction,
+      })
+    },
+    winner() {
+      return this.$store.getters['counterparties/related']({
+        parent: this.auction,
+        relationship: 'winner',
       })
     },
   },

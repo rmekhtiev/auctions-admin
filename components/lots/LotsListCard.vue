@@ -28,9 +28,32 @@
         </v-list-item-content>
 
         <v-list-item-action>
-          <v-btn icon @click="updateLot(lot)">
-            <v-icon color="grey lighten-1">mdi-pencil</v-icon>
-          </v-btn>
+          <v-menu bottom left>
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn icon v-bind="attrs" v-on="on">
+                <v-icon>mdi-dots-vertical</v-icon>
+              </v-btn>
+            </template>
+
+            <v-list dense>
+              <v-list-item @click="deleteLot(lot)">
+                <v-list-item-icon>
+                  <v-icon>mdi-delete-alert</v-icon>
+                </v-list-item-icon>
+                <v-list-item-content>
+                  <v-list-item-title>Удалить</v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
+              <v-list-item @click="updateLot(lot)">
+                <v-list-item-icon>
+                  <v-icon>mdi-lead-pencil</v-icon>
+                </v-list-item-icon>
+                <v-list-item-content>
+                  <v-list-item-title>Редактировать</v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
+            </v-list>
+          </v-menu>
         </v-list-item-action>
       </v-list-item>
     </v-list>
@@ -102,6 +125,15 @@ export default {
         this.$store.dispatch('lots/loadById', {
           id: lot.id,
         })
+      }
+    },
+    async deleteLot(lot) {
+      const res = await this.$dialog.confirm({
+        text: 'Вы уверены, что хотите удалить лот?',
+        title: 'Внимание',
+      })
+      if (res !== false) {
+        this.$store.dispatch('lots/delete', lot)
       }
     },
   },
