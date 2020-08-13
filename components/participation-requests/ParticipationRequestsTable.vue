@@ -29,7 +29,7 @@
             },
           }"
         >
-          {{
+          @{{
             $store.getters['users/byId']({
               id: item.relationships.author.data.id,
             }).attributes.login
@@ -39,13 +39,11 @@
       <template v-slot:item.actions="{ item }">
         <v-icon
           v-if="!item.attributes.approved_at"
-          class="mr-2"
           @click="approveRequest(item)"
-          >mdi-check</v-icon
         >
           mdi-check
         </v-icon>
-        <v-icon v-if="item.attributes.approved_at" @click="rejectRequest(item)">
+        <v-icon v-else @click="rejectRequest(item)">
           mdi-close
         </v-icon>
       </template>

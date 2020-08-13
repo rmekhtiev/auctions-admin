@@ -72,29 +72,18 @@ export default {
     return Promise.all([
       store.dispatch('auctions/loadById', {
         id: params.id,
-      }),
-      store.dispatch('lots/loadRelated', {
-        parent: {
-          id: params.id,
-          type: 'auctions',
-        },
-      }),
-      store.dispatch('participation-requests/loadRelated', {
-        parent: {
-          id: params.id,
-          type: 'auctions',
-        },
-      }),
-      store.dispatch('auction-images/loadRelated', {
-        parent: {
-          id: params.id,
-          type: 'auctions',
-        },
-      }),
-      store.dispatch('bets/loadRelated', {
-        parent: {
-          id: params.id,
-          type: 'auctions',
+        options: {
+          include: [
+            'lots',
+            'participation-requests',
+            'participation-requests.author',
+            'participation-requests.counterparty',
+            'auction-images',
+            'bets',
+            'bets.author',
+            'bets.counterparty',
+            'winner',
+          ],
         },
       }),
     ])
@@ -136,6 +125,12 @@ export default {
     bets() {
       return this.$store.getters['bets/related']({
         parent: this.auction,
+      })
+    },
+    winner() {
+      return this.$store.getters['counterparties/related']({
+        parent: this.auction,
+        relationship: 'winner',
       })
     },
   },
