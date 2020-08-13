@@ -46,6 +46,13 @@
           class="mb-6"
         />
 
+        <counterparty-legal-card
+          v-if="winner"
+          :counterparty="winner"
+          :heading="'Победитель'"
+          class="mb-6"
+        />
+
         <bets-info-card :heading="'Ставки'" :bets="bets" />
       </v-col>
       <v-col sm="12" md="6" lg="4" class="order-first order-lg-last">
