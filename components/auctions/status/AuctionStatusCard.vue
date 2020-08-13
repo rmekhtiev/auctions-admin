@@ -28,6 +28,7 @@
       <pending-status-actions v-if="isPending" :auction="auction" />
       <upcoming-status-actions v-if="isUpcoming" :auction="auction" />
       <cancelled-status-actions v-if="isCancelled" :auction="auction" />
+      <succeeded-status-actions v-if="isSucceeded" :auction="auction" />
     </template>
   </v-card>
 </template>
@@ -55,6 +56,9 @@ export default {
     },
     isCancelled() {
       return this.auction.attributes.status === 'CANCELLED'
+    },
+    isSucceeded() {
+      return this.auction.attributes.status === 'SUCCEEDED'
     },
   },
 }
